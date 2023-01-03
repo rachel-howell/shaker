@@ -34,22 +34,22 @@ const SearchResults = () => {
 
 
   return (
-    <div className="container d-flex flex-column align-items-start col-7 bg-info">
-        <div className="container d-flex flex-column align-items-start">
-            <h6>Search results for...</h6>
+    <div className="container row d-flex flex-column align-items-start bg-primary mx-auto col-md-7 col-12">
+        <div className="container d-flex flex-column align-items-start col-12 col-md-6">
+            <h5>Search results for...</h5>
             <form className="form-control d-flex" onSubmit={submitHandler}>
-                <input className="me-3 border" type="text" placeholder={name} onChange={(e)=>setNewSearch(e.target.value)}/>
+                <input className="me-3 no-border form-control" type="text" placeholder={name} onChange={(e)=>setNewSearch(e.target.value)}/>
                 <input className="btn border" type="submit" />
             </form>
         </div>
-        <div className="d-flex col-12 flex-wrap" >
+        <div className="d-flex col-12 flex-wrap p-2 bg-info" >
             {
                 cocktailList ? cocktailList.map(drink => (
-                    <div className="d-flex flex-column">
+                    <div className="d-flex flex-column bg-danger">
                         <img className="p-3 rounded" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/>
                         <Link to={`/details/${drink.idDrink}`}>{drink.strDrink}</Link>
                     </div>
-                )) : <p>No results found. Try a different search.</p>
+                )) : <p className="d-flex flex-column mx-auto">No results found. Try a different search.</p>
             }
         </div>
     </div>
