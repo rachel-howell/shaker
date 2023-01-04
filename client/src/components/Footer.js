@@ -3,12 +3,12 @@ import React from 'react'
 const Footer = () => {
 
     const divStyle = {
-        height: "20vh",
-        backgroundColor: "beige"
+        backgroundColor: "beige",
+        height: '15vh'
     }
   return (
-    <div className="mt-5" style={divStyle}>
-        Contact Us
+    <div className="mt-3" style={divStyle}>
+        I am a footer
     </div>
   )
 }

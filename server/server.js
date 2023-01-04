@@ -1,12 +1,24 @@
 const express = require('express');
-require('./config/mongoose.config');
-const cors = require('cors');
 const app = express();
-app.use(cors());
 const PORT = 8000;
+require('./config/mongoose.config');
 
-app.use(express.json(), express.urlencoded({extended: true}));
-// require('./routes/shaker.routes')(app);
+const cors = require('cors');
+app.use(cors({
+    origin: 'http://localhost:3000'
+}))
+
+
+require('dotenv').config();
+const cookieParser = require('cookie-parser')
+
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+
+
+const Routes = require('./routes/user.routes')
+Routes(app)
+
 
 app.listen(PORT, ()=>{
     console.log(`Server is up and running at port ${PORT}.`)

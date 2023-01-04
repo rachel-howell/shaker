@@ -18,7 +18,7 @@ const SearchResults = () => {
 
     useEffect(()=>{
         axios
-            .get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${name}`)
+            .get(`https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=${name}`)
             .then((res) => setCocktailList(res.data.drinks))
             .catch(err => {
                 console.log(err)
@@ -34,7 +34,7 @@ const SearchResults = () => {
 
 
   return (
-    <div className="container row d-flex flex-column align-items-start bg-primary mx-auto col-md-7 col-12">
+    <div className="container row d-flex flex-column align-items-start bg-primary mx-auto col-md-10 col-12">
         <div className="container d-flex flex-column align-items-start col-12 col-md-6">
             <h5>Search results for...</h5>
             <form className="form-control d-flex" onSubmit={submitHandler}>

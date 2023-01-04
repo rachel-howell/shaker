@@ -19,9 +19,9 @@ const NavBar = () => {
     }
 
   return (
-    <div className="navbar d-flex justify-content-between align-items-center px-4 py-2 col-12 col-md-10 mx-auto">
+    <div className="navbar d-flex justify-content-between align-items-baseline px-4 col-12 col-md-10 mx-auto bg-warning">
 
-        <div className="nav-item dropdown">
+        <div className="nav-item dropdown bg-danger">
             <button className="nav-link dropdown-toggle btn" style={dropDownMenu} href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                 <MenuIcon />
             </button>
@@ -32,11 +32,9 @@ const NavBar = () => {
             </ul>
         </div>
 
-        <div>
-            <h4 onClick={homeBtn}>Shaker.io</h4>
-        </div>
+            <h4 className="bg-danger" onClick={homeBtn}>Shaker.io</h4>
         
-        <div className="d-flex flex-row align-items-center">
+        <div className="d-flex flex-row align-items-center bg-danger">
             <button className="btn" onClick={homeBtn}>
                 <HomeIcon />
             </button>

@@ -10,7 +10,7 @@ const RandomCocktail = () => {
 
     useEffect(()=>{
         axios
-            .get('https://www.thecocktaildb.com/api/json/v1/1/random.php')
+            .get('https://www.thecocktaildb.com/api/json/v2/9973533/random.php')
             .then((res) => setCocktail(res.data.drinks[0]))
             .catch(err => console.log(err))
     }, [])

@@ -24,7 +24,7 @@ function App() {
           <Route path="/isearch/" element={<IngredientSearchResults />} />
           <Route path="/browse" element={<BrowseAll />} />
         </Routes>
-        <Footer />
+      <Footer />
       </BrowserRouter>
     </div>
   );
