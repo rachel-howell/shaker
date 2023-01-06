@@ -20,11 +20,11 @@ const RandomCocktail = () => {
         <h1>{ cocktail.strDrink }</h1>
         <div className="d-flex flex-wrap mx-auto col-md-8 col-12 justify-content-between align-items-start">
 
-            <div className="col-md-4 col-12">
+            <div className="col-lg-4 col-12">
                 <img src={cocktail.strDrinkThumb} style={imgStyle} className="rounded float-left"/>
             </div>
 
-            <div className="px-5 py-3 col-md-4 col-12">
+            <div className="px-5 py-3 col-lg-4 col-12">
                 <h6>Ingredients:</h6>
                 <table className="table-borderless col-12">
                     <tbody>
@@ -65,7 +65,7 @@ const RandomCocktail = () => {
                 </table>
             </div>
 
-            <div className="px-5 py-3 col-md-4 col-12">
+            <div className="px-5 py-3 col-lg-4 col-12">
                 <h6>Instructions:</h6>
                 <p>{cocktail.strGlass} recommended.</p>
                 { cocktail.strInstructions }

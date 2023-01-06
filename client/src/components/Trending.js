@@ -32,14 +32,14 @@ const Trending = () => {
   return (
     <>
         <h2>Trending Cocktails</h2>
-        <div className="d-flex col-12 col-md-10 mx-auto my-auto flex-wrap bg-info" >
+        <div className="d-flex col-12 col-md-10 mx-auto my-auto flex-wrap" >
             {
                 cocktailList ? cocktailList.slice(0,6).map(drink => (
-                    <div className="d-flex flex-column mx-auto bg-danger">
+                    <div className="d-flex flex-column mx-auto">
                         <Link to={`/details/${drink.idDrink}`}><img className="p-2" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link>
                         <Link to={`/details/${drink.idDrink}`} style={linkStyle}>{drink.strDrink}</Link>
                     </div>
-                )) : <p className="d-flex flex-column mx-auto">No results found. Try a different search.</p>
+                )) : <p className="d-flex flex-column mx-auto">Something went wrong.</p>
             }
         </div>
     </>

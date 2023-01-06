@@ -20,13 +20,13 @@ const CocktailDetails = () => {
   return (
     <div className="mt-1">
         <h1>{ cocktail.strDrink }</h1>
-        <div className="d-flex flex-wrap mx-auto col-md-10 col-12 justify-content-between align-items-start bg-danger">
+        <div className="d-flex flex-wrap mx-auto col-md-10 col-12 justify-content-between align-items-start">
 
-            <div className="col-md-4 col-12">
-                <img src={cocktail.strDrinkThumb} style={imgStyle} className="rounded float-left"/>
+            <div className="col-lg-4 col-12">
+                <img src={cocktail.strDrinkThumb} style={imgStyle} className="img-fluid rounded float-left"/>
             </div>
 
-            <div className="px-5 py-3 col-md-4 col-12">
+            <div className="px-5 py-3 col-lg-4 col-12">
                 <h6>Ingredients:</h6>
                 <table className="table-borderless col-12">
                     <tbody>
@@ -69,7 +69,7 @@ const CocktailDetails = () => {
                     
                 </table>
             </div>
-            <div className="px-5 py-3 col-md-4 col-12">
+            <div className="px-5 py-3 col-lg-4 col-12">
                 <h6>Instructions:</h6>
                 <p>{cocktail.strGlass} recommended.</p>
                 { cocktail.strInstructions }
