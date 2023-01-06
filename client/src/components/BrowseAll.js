@@ -9,53 +9,62 @@ const BrowseAll = () => {
   }
 
   const linkStyle = {
-      color: 'black',
-      textDecoration: 'none'
+    color: 'black',
+    textDecoration: 'none'
   }
 
-  www.thecocktaildb.com/api/json/v1/1/search.php?f=a
+  const btnStyle = {
+    display:'inline-block'
+  }
+
 
   const [ cocktailList, setCocktailList ] = useState([]);
 
-  const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+  const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '#']
 
   useEffect(()=>{
       axios
-          .get(`https://www.thecocktaildb.com/api/json/v2/9973533/search.php?f=${a}`)
+          .get(`https://www.thecocktaildb.com/api/json/v2/9973533/search.php?f=a`)
           .then((res) => setCocktailList(res.data.drinks))
           .catch(err => {
               console.log(err)
           })
   }, [])
 
-  const searchByLetter = (letter) => {
+  const searchByLetter = (char) => {
       axios
-            .get(`https://www.thecocktaildb.com/api/json/v2/9973533/search.php?f=${letter}`)
+            .get(`https://www.thecocktaildb.com/api/json/v2/9973533/search.php?f=${char}`)
             .then((res) => setCocktailList(res.data.drinks))
             .catch(err => {
                 console.log(err)
             })
     }
-  }
 
   return (
-    <div className="bg-danger d-flex flex-column">
+    <div className="d-flex flex-column">
 
       <div className="container d-flex flex-column align-items-center col-12 my-2">
         <h2>Browse All Cocktails</h2>
-
-        A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | #
+        <div>
+          {
+            alphabet.map(char => (
+              <button className="btn p-1 m-1 shadow-none btn-dark" style={{btnStyle}} onClick={()=>searchByLetter(char)}> 
+                &nbsp;{char.toUpperCase()}&nbsp;
+              </button>
+            ))
+          }
+        </div>
 
       </div>
 
-      <div className="d-flex flex-wrap">
+      <div className="d-flex flex-wrap col-lg-10 col-12 mx-auto">
         {
           cocktailList ? cocktailList.map(drink => (
               <div className="d-flex flex-column mx-auto">
                   <Link to={`/details/${drink.idDrink}`}><img className="p-2" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link>
                   <Link to={`/details/${drink.idDrink}`} style={linkStyle}>{drink.strDrink}</Link>
               </div>
-          )) : <p className="d-flex flex-column mx-auto">Something went wrong.</p>
+          )) : <p className="d-flex flex-column mx-auto">No cocktails found :(</p>
         }
       </div>
       
