@@ -9,14 +9,18 @@ const Footer = () => {
         height: '30vh'
     }
   return (
-    <div className="mt-3 align-contents-start d-flex" style={divStyle}>
+    <div className="mt-3 d-flex" style={divStyle}>
 
-      <div className="d-flex col-md-10 mx-auto mt-2 flex-column">
+      <div className="d-flex col-6 col-md-4 mx-auto mt-5 flex-column">
         <h4>Thanks for using Shaker.io!</h4>
         <div>
           <a href="https://www.linkedin.com/in/racheljhowell/"><LinkedInIcon fontSize="large" color="info"/></a>
           <a href="https://github.com/rachel-howell"><GitHubIcon fontSize="large" color="info"/></a>
         </div>
+      </div>
+
+      <div className="d-flex col-6 col-md-4 mx-auto mt-5 flex-column">
+        other stuff
       </div>
 
     </div>

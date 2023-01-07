@@ -13,6 +13,9 @@ const NavBar = () => {
         navigate('/')
     }
 
+    const loginBtn = () => {
+        navigate('/login')
+    }
     
     const dropDownMenu = {
         color: "black"
@@ -22,7 +25,7 @@ const NavBar = () => {
     <div className="navbar d-flex justify-content-between align-items-baseline px-4 col-12 col-md-10 mx-auto">
 
         <div className="nav-item dropdown">
-            <button className="nav-link dropdown-toggle btn" style={dropDownMenu} href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+            <button className="nav-link dropdown-toggle btn shadow-none" style={dropDownMenu} href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                 <MenuIcon />
             </button>
             <ul className="dropdown-menu">
@@ -35,11 +38,11 @@ const NavBar = () => {
             <h4 onClick={homeBtn}>Shaker.io</h4>
         
         <div className="d-flex flex-row align-items-center">
-            <button className="btn" onClick={homeBtn}>
+            <button className="btn shadow-none" onClick={homeBtn}>
                 <HomeIcon />
             </button>
             <h4 className="align-self-end lead">|</h4>
-            <button className="btn">
+            <button className="btn shadow-none" onClick={loginBtn}>
                 Log In
             </button>
         </div>

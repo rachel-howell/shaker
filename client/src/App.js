@@ -6,6 +6,7 @@ import RandomCocktail from './components/RandomCocktail';
 import SearchResults from './components/SearchResults';
 import IngredientSearchResults from './components/IngredientSearchResults';
 import Footer from './components/Footer';
+import UserLogin from './components/UserLogin';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BrowseAll from './components/BrowseAll';
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/isearch/:ingredient" element={<IngredientSearchResults />} />
           <Route path="/isearch/" element={<IngredientSearchResults />} />
           <Route path="/browse" element={<BrowseAll />} />
+          <Route path="/login" element={<UserLogin />} />
         </Routes>
       <Footer />
       </BrowserRouter>
