@@ -14,25 +14,32 @@ module.exports = {
         }
     },
     loginUser:async (req,res) => {
-        const user = await User.findOne({email:req.body.email})
+        const user = await User.findOne({email:req.body.userEmail})
+        console.log(req.body.userEmail)
         if(!user) {
-            res.status(400).json({error:"Invalid email or password."})
+            return res.status(400).json({error:"Invalid email or password."})
         }
         try{
-            const isPasswordValid = await bcrypt.compare(req.body.password, user.password)
+            const isPasswordValid = await bcrypt.compare(req.body.userPassword, user.password)
             if(!isPasswordValid){
-                res.status(400).json({error:"Invalid email or password."})
+                return res.status(400).json({error:"Invalid email or password."})
             }else{
                 const userToken = jwt.sign({_id:user._id},SECRET)
-                res.status(201).cookie('userToken',userToken,{httpOnly:true,expires:new Date(Date.now() + 90000)}).json({successMessage:"User logged in",user:user})
+                return res.status(201).cookie('userToken',userToken,{httpOnly:true,expires:new Date(Date.now() + 90000)}).json({successMessage:"User logged in",user:user})
             }
         }catch(error){
-            res.status(400).json({error:"Invalid email or password."})
+            return res.status(400).json({error:"Invalid email or password."})
         }
     },
     logOutUser: (req,res) => {
         res.clearCookie("userToken")
         res.json({success:"User logged out"})
+        return
+    },
+    showUsers: (req,res) => {
+        User.find()
+            .then(user => res.json(user))
+            .catch(err => res.status(400).json(err))
     }
 
 }

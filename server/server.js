@@ -7,10 +7,6 @@ require('./config/mongoose.config');
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-// app.use(cors({
-//     origin: 'http://localhost:3000'
-// }))
-
 const whitelist = ["http://localhost:3000"]
 const corsOptions = {
     origin: (origin, callback) => {
@@ -26,10 +22,9 @@ app.use(cors(corsOptions))
 
 
 require('dotenv').config();
+
 const cookieParser = require('cookie-parser')
-
-
-
+app.use(cookieParser())
 
 const Routes = require('./routes/user.routes')
 Routes(app)

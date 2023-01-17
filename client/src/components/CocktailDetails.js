@@ -20,6 +20,7 @@ const CocktailDetails = () => {
   return (
     <div className="mt-1">
         <h1>{ cocktail.strDrink }</h1>
+
         <div className="d-flex flex-wrap mx-auto col-md-10 col-12 justify-content-between align-items-start">
 
             <div className="col-lg-4 col-12">
@@ -74,6 +75,11 @@ const CocktailDetails = () => {
                 <p>{cocktail.strGlass} recommended.</p>
                 { cocktail.strInstructions }
             </div>
+        </div>
+
+        <div className="btn-group" role="group" aria-label="Basic outlined example">
+            <button type="button" className="btn btn-outline-danger">Save</button>
+            <button type="button" className="btn btn-outline-danger">Share</button>
         </div>
         
     </div>

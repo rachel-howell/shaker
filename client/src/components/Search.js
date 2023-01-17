@@ -38,13 +38,13 @@ const Search = () => {
                     <div className="px-3 d-flex flex-column align-items-start">
                         <div className="form-check">
                             <input className="form-check-input" type="radio" name="searchChoice" id="drinkName" value="name" defaultChecked onChange={toggleSearch}/>
-                            <label className="form-check-label" for="drinkName">
+                            <label className="form-check-label">
                                 Name
                             </label>
                         </div>
                         <div className="form-check">
                             <input className="form-check-input" type="radio" name="searchChoice" id="ingredient" value="ingredient" onChange={toggleSearch}/>
-                            <label className="form-check-label" for="ingredient">
+                            <label className="form-check-label">
                                 Ingredient
                             </label>
                         </div>
