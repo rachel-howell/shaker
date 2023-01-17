@@ -26,7 +26,7 @@ const UserLogin = (props) => {
 
   return (
     <div className="p-4 pt-3">
-        <h1>Welcome back! {console.log("lol", loggedIn )}</h1>
+        <h1>Welcome back!</h1>
         <div className="p-5 pt-3 d-flex mx-auto flex-column col-12 col-md-8 col-lg-5">
             <form onSubmit={submitHandler}>
                 <div className="form-floating mb-3">

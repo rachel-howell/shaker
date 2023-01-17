@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import UserLogin from './components/UserLogin';
 import Favorites from './components/Favorites';
 import AddNew from './components/AddNew';
+import UserCocktail from './components/UserCocktail';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BrowseAll from './components/BrowseAll';
 import { useState } from 'react'
@@ -32,6 +33,7 @@ function App() {
           <Route path="/login" element={<UserLogin loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/addNew" element={<AddNew />} />
+          <Route path="/userCocktail" element={<UserCocktail />} />
         </Routes>
       <Footer />
       </BrowserRouter>

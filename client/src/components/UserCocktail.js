@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const CocktailDetails = () => {
+const UserCocktail = () => {
 
     const [ cocktail, setCocktail ] = useState("");
     const imgStyle = {
@@ -10,13 +10,20 @@ const CocktailDetails = () => {
     }
     const {id} = useParams();
 
+    // useEffect(()=>{
+    //     axios
+    //         .get(`http://localhost:8000/api/getOne/${id}`)
+    //         .then((res) => console.log(res))
+    //         .catch(err => console.log(err))
+    // }, [])
+
     useEffect(()=>{
         axios
-            .get(`http://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=${id}`)
+            .get('https://www.thecocktaildb.com/api/json/v2/9973533/random.php')
             .then((res) => setCocktail(res.data.drinks[0]))
             .catch(err => console.log(err))
     }, [])
-    
+
   return (
     <div className="mt-1">
         <h1>{ cocktail.strDrink }</h1>
@@ -77,13 +84,13 @@ const CocktailDetails = () => {
             </div>
         </div>
 
-        {/* <div className="btn-group" role="group" aria-label="Basic outlined example">
-            <button type="button" className="btn btn-outline-danger">Save</button>
-            <button type="button" className="btn btn-outline-danger">Share</button>
-        </div> */}
+        <div>
+            <button className="btn btn-success me-3">Edit</button>
+            <button className="btn btn-danger">Delete</button>
+        </div>
         
     </div>
   )
 }
 
-export default CocktailDetails
+export default UserCocktail

@@ -29,6 +29,8 @@ app.use(cookieParser())
 const Routes = require('./routes/user.routes')
 Routes(app)
 
+const CocktailRoutes = require('./routes/cocktail.routes')
+CocktailRoutes(app)
 
 app.listen(PORT, ()=>{
     console.log(`Server is up and running at port ${PORT}.`)
