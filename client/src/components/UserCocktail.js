@@ -4,25 +4,19 @@ import axios from 'axios';
 
 const UserCocktail = () => {
 
-    const [ cocktail, setCocktail ] = useState("");
+    const [ cocktail, setCocktail ] = useState({});
     const imgStyle = {
         height: '30vh'
     }
     const {id} = useParams();
 
-    // useEffect(()=>{
-    //     axios
-    //         .get(`http://localhost:8000/api/getOne/${id}`)
-    //         .then((res) => console.log(res))
-    //         .catch(err => console.log(err))
-    // }, [])
-
     useEffect(()=>{
         axios
-            .get('https://www.thecocktaildb.com/api/json/v2/9973533/random.php')
-            .then((res) => setCocktail(res.data.drinks[0]))
+            .get(`http://localhost:8000/api/getOne/${id}`)
+            .then((res) => setCocktail(res.data))
             .catch(err => console.log(err))
     }, [])
+
 
   return (
     <div className="mt-1">

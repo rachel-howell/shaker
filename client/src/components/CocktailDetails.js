@@ -12,7 +12,7 @@ const CocktailDetails = () => {
 
     useEffect(()=>{
         axios
-            .get(`http://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=${id}`)
+            .get(`https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=${id}`)
             .then((res) => setCocktail(res.data.drinks[0]))
             .catch(err => console.log(err))
     }, [])

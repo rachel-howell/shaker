@@ -25,5 +25,11 @@ module.exports = {
         Cocktail.findOneAndDelete({_id: req.params.id})
             .then(cocktail => res.json(cocktail))
             .catch(err => res.status(400).json(err))
+    },
+    getCocktailByLetter: (req,res) => {
+        let char = req.params.char
+        Cocktail.find({strDrink: {$regex: '^' + char, $options: 'i'}})
+            .then(cocktail => res.json(cocktail))
+            .catch(err => res.status(400).json(err))
     }
 }

@@ -33,7 +33,7 @@ function App() {
           <Route path="/login" element={<UserLogin loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/addNew" element={<AddNew />} />
-          <Route path="/userCocktail" element={<UserCocktail />} />
+          <Route path="/userCocktail/:id" element={<UserCocktail />} />
         </Routes>
       <Footer />
       </BrowserRouter>

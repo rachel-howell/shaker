@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const CocktailSchema = new mongoose.Schema({
-    strDink: {
-        type: String
+    strDrink: {
+        type: String,
+        unique: true
         // required: [true, "Drink name is required."]
     },
     strGlass: {
@@ -68,4 +69,4 @@ const CocktailSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
-module.exports = mongoose.model('Cocktail', CocktailSchema);
+module.exports = mongoose.model('UserCocktails', CocktailSchema);

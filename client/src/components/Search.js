@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Trending from './Trending';
+import UserCocktailList from './UserCocktailList';
 
 const Search = () => {
 
@@ -60,6 +61,9 @@ const Search = () => {
 
         <div>
             <Trending />
+        </div>
+        <div>
+            <UserCocktailList />
         </div>
     </div>
   )

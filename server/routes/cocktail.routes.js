@@ -6,4 +6,5 @@ module.exports = (app) => {
     app.get('/api/getOne/:id', CocktailController.getCocktailById)
     app.put('/api/update/:id', CocktailController.updateCocktail)
     app.delete('/api/delete/:id', CocktailController.deleteCocktail)
+    app.get('/api/lettersearch/:char', CocktailController.getCocktailByLetter)
 }
