@@ -11,24 +11,27 @@ const SearchResults = () => {
     const imgStyle = {
         height: '25vh'
     }
-    const divStyle = {
-        width: '100vh'
-    }
 
     const linkStyle = {
         color: 'black',
         textDecoration: 'none'
     }
 
+    const divStyle = {
+        minHeight: '50vh'
+    }
+
     const navigate = useNavigate();
 
     useEffect(()=>{
+        name ? 
         axios
             .get(`https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=${name}`)
-            .then((res) => setCocktailList(res.data.drinks))
+            .then((res) => res.data.drinks ? setCocktailList(res.data.drinks) : setCocktailList(false))
             .catch(err => {
                 console.log(err)
             })
+        : setCocktailList(false)
     }, [])
 
     const submitHandler = (e) => {
@@ -41,14 +44,14 @@ const SearchResults = () => {
 
   return (
     <div className="container row d-flex flex-column align-items-start mx-auto col-md-10 col-12">
-        <div className="container d-flex flex-column align-items-start col-12 col-md-6 my-2">
-            <h5>Search results for...</h5>
-            <form className="form-control d-flex" onSubmit={submitHandler}>
+        <div className="container d-flex flex-column align-items-start col-12 col-md-6 my-2" >
+            <h5 className="ms-3">Search results for...</h5>
+            <form className="form-control d-flex border-0" onSubmit={submitHandler}>
                 <input className="me-3 no-border form-control" type="text" placeholder={name} onChange={(e)=>setNewSearch(e.target.value)}/>
                 <input className="btn border" type="submit" />
             </form>
         </div>
-        <div className="d-flex col-12 flex-wrap p-2" >
+        <div className="d-flex col-12 flex-wrap p-2" style={divStyle}>
             {
                 cocktailList ? cocktailList.map(drink => (
                     <div className="d-flex flex-column mx-auto">

@@ -12,11 +12,30 @@ import AddNew from './components/AddNew';
 import UserCocktail from './components/UserCocktail';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BrowseAll from './components/BrowseAll';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import RegistrationForm from './components/RegistrationForm';
+import EditCocktail from './components/EditCocktail';
+import axios from 'axios';
 
 function App() {
 
   const [ loggedIn, setLoggedIn ] = useState(false);
+
+  useEffect(()=>{
+    console.log("triggered")
+    axios
+      .get('http://localhost:8000/api/checkloginstatus', {withCredentials:true, credentials:'include'})
+      .then((res)=> {
+        if(res.data == "true"){
+          setLoggedIn(true);
+        }else{
+          setLoggedIn(false);
+        }
+      })
+      .catch(err=>console.log(err))
+
+  })
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -33,7 +52,9 @@ function App() {
           <Route path="/login" element={<UserLogin loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/addNew" element={<AddNew />} />
-          <Route path="/userCocktail/:id" element={<UserCocktail />} />
+          <Route path="/userCocktail/:id" element={<UserCocktail loggedIn={loggedIn} />} />
+          <Route path="/register" element={<RegistrationForm loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
+          <Route path="/edit/:id" element={<EditCocktail />} />
         </Routes>
       <Footer />
       </BrowserRouter>

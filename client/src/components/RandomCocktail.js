@@ -7,6 +7,9 @@ const RandomCocktail = () => {
     const imgStyle = {
         height: '30vh'
     }
+    const phantomDiv = {
+        height: '20vh'
+    }
 
     useEffect(()=>{
         axios
@@ -16,7 +19,7 @@ const RandomCocktail = () => {
     }, [])
     
   return (
-    <div className="mt-1">
+    <div className="mt-3">
         <h1>{ cocktail.strDrink }</h1>
         <div className="d-flex flex-wrap mx-auto col-md-8 col-12 justify-content-between align-items-start">
 
@@ -72,7 +75,7 @@ const RandomCocktail = () => {
             </div>
             
         </div>
-        
+        <div style={phantomDiv}></div>
     </div>
   )
 }

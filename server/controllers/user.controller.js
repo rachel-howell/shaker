@@ -15,20 +15,20 @@ module.exports = {
     },
     loginUser:async (req,res) => {
         const user = await User.findOne({email:req.body.userEmail})
-        console.log(req.body.userEmail)
+        console.log("email", req.body.userEmail)
         if(!user) {
-            return res.status(400).json({error:"Invalid email or password."})
+            return res.status(400).json({error:"Invalid email or password. A"})
         }
         try{
             const isPasswordValid = await bcrypt.compare(req.body.userPassword, user.password)
             if(!isPasswordValid){
-                return res.status(400).json({error:"Invalid email or password."})
+                return res.status(400).json({error:"Invalid email or password. B"})
             }else{
                 const userToken = jwt.sign({_id:user._id},SECRET)
-                return res.status(201).cookie('userToken',userToken,{httpOnly:true,expires:new Date(Date.now() + 90000)}).json({successMessage:"User logged in",user:user})
+                return res.status(201).cookie('userToken',userToken,{httpOnly:true,expires:new Date(Date.now() + 900000)}).json({successMessage:"User logged in",user:user})
             }
         }catch(error){
-            return res.status(400).json({error:"Invalid email or password."})
+            return res.status(400).json({error:"Invalid email or password. c"})
         }
     },
     logOutUser: (req,res) => {
@@ -40,6 +40,14 @@ module.exports = {
         User.find()
             .then(user => res.json(user))
             .catch(err => res.status(400).json(err))
+    },
+    isUserLoggedIn: (req,res) => {
+        const token = req.cookies.userToken;
+        if(!token) {
+            res.json("false");
+        } else{
+            res.json("true");
+        }
     }
 
 }

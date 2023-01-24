@@ -8,7 +8,12 @@ const CocktailDetails = () => {
     const imgStyle = {
         height: '30vh'
     }
+
     const {id} = useParams();
+
+    const divStyle = {
+        minHeight: "52vh"
+    }
 
     useEffect(()=>{
         axios
@@ -21,7 +26,7 @@ const CocktailDetails = () => {
     <div className="mt-1">
         <h1>{ cocktail.strDrink }</h1>
 
-        <div className="d-flex flex-wrap mx-auto col-md-10 col-12 justify-content-between align-items-start">
+        <div className="d-flex flex-wrap mx-auto col-md-10 col-12 justify-content-between align-items-start" style={divStyle}>
 
             <div className="col-lg-4 col-12">
                 <img src={cocktail.strDrinkThumb} style={imgStyle} className="img-fluid rounded float-left"/>

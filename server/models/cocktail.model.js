@@ -3,20 +3,20 @@ const mongoose = require('mongoose');
 const CocktailSchema = new mongoose.Schema({
     strDrink: {
         type: String,
-        unique: true
-        // required: [true, "Drink name is required."]
+        unique: [true, "A cocktail with that name already exists in the database."],
+        required: [true, "Drink name required."]
     },
     strGlass: {
-        type: String
-        // required: [true, "Glass type is required."]
+        type: String,
+        required: [true, "Glass type required."]
     },
     strDrinkThumb: {
-        type: String
-        // required: [true, "Image URL is required."]
+        type: String,
+        required: [true, "Image URL required. Hint: Upload to a site like Imgur and copy image URL."]
     },
     strIngredient1: {
-        type: String
-        // required: [true, "At least one ingredient required."]
+        type: String,
+        required: [true, "At least one ingredient required."]
     },
     strIngredient2: {
         type: String
@@ -37,8 +37,8 @@ const CocktailSchema = new mongoose.Schema({
         type: String
     },
     strMeasure1: {
-        type: String
-        // required: [true, "At least one ingredient required."]
+        type: String,
+        required: [true, "At least one ingredient required."]
     },
     strMeasure2: {
         type: String
@@ -59,8 +59,8 @@ const CocktailSchema = new mongoose.Schema({
         type: String
     },
     strInstructions: {
-        type: String
-        // required: [true, "Instructions required."]
+        type: String,
+        required: [true, "Instructions required."]
     },
     creator: {
         type: String

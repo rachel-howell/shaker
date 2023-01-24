@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -20,10 +20,9 @@ const NavBar = (props) => {
         navigate('/login')
     }
 
-    const logoutBtn = (e) => {
-        e.preventDefault();
+    const logoutBtn = () => {
         axios
-            .get(`http://localhost:8000/api/logout`)
+            .get(`http://localhost:8000/api/logout`, {withCredentials:true, credentials:'include'})
             .then((res) => {
                 setLoggedIn(false)
                 navigate('/')
@@ -38,7 +37,7 @@ const NavBar = (props) => {
     }
 
     const logoStyle = {
-        height: '8vh',
+        height: '5em',
         width: 'auto',
         cursor: 'pointer'
     }

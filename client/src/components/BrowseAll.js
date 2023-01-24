@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const BrowseAll = () => {
 
   const imgStyle = {
-    height: '25vh'
+    height: '12em'
   }
 
   const linkStyle = {
@@ -17,11 +17,15 @@ const BrowseAll = () => {
     display:'inline-block'
   }
 
+  const divStyle = {
+    minHeight: '58vh'
+  }
+
 
   const [ cocktailList, setCocktailList ] = useState([]);
   const [ userCocktailList, setUserCocktailList ] = useState([]);
 
-  const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '#']
+  const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
   useEffect(()=>{
     axios
@@ -49,9 +53,9 @@ const BrowseAll = () => {
     }
 
   return (
-    <div className="d-flex flex-column">
+    <div className="d-flex flex-column" style={divStyle}>
 
-      <div className="container d-flex flex-column align-items-center col-12 my-2">
+      <div className="container d-flex flex-column align-items-center col-12 my-2" >
         <h2>Browse All Cocktails</h2>
         <div>
           {
@@ -65,7 +69,7 @@ const BrowseAll = () => {
 
       </div>
 
-      <div className="d-flex flex-wrap col-lg-10 col-12 mx-auto">
+      <div className="d-flex flex-wrap col-lg-10 col-12 mx-auto mb-3">
         {
           userCocktailList ? userCocktailList.map(drink => (
               <div className="d-flex flex-column mx-auto">

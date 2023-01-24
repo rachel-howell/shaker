@@ -1,32 +1,42 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
 
 const UserLogin = (props) => {
 
     const [ userEmail, setUserEmail ] = useState("");
     const [ userPassword, setUserPassword ] = useState("");
+    const [ errors, setErrors ] = useState([]);
+
     const { loggedIn, setLoggedIn } = props;
     const navigate = useNavigate();
 
+    const divStyle = {
+        minHeight: '58vh'
+    }
+
+
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log(userEmail, userPassword)
+        let pw = userPassword.toString();
+        let user = { userEmail, userPassword: pw };
+        console.log(user)
         axios
-            .post(`http://localhost:8000/api/login`,{ userEmail, userPassword }, {withCredentials:true, credentials:'include'})
+            .post(`http://localhost:8000/api/login`,user, {withCredentials:true, credentials:'include'})
             .then((res) => {
+                console.log(res)
                 setLoggedIn(true)
                 navigate('/')
             })
             .catch(err => {
-                console.log(err)
+                setErrors(err.response.data.error)
             })
     }
 
 
   return (
-    <div className="p-4 pt-3">
-        <h1>Welcome back!</h1>
+    <div className="p-4 pt-5" style={divStyle}>
+        <h1 className="pt-3">Welcome back!</h1>
         <div className="p-5 pt-3 d-flex mx-auto flex-column col-12 col-md-8 col-lg-5">
             <form onSubmit={submitHandler}>
                 <div className="form-floating mb-3">
@@ -37,14 +47,16 @@ const UserLogin = (props) => {
                     <input className="form-control" type="password" placeholder="Password" onChange={(e)=>setUserPassword(e.target.value)}/>
                     <label className="form-label">Password</label>
                 </div>
+                {
+                        errors ? <p className="text-danger">{errors}</p> : null
+                }
                 <input className="btn btn-dark mb-2" type="submit" />
             </form>
             <div className="d-flex flex-row p-2 mx-auto">
-                <button className="btn btn-sm border me-1">Forgot Password</button>
-                <button className="btn btn-sm border">Register New User</button>
+                {/* <Link className="btn btn-sm border me-1">Forgot Password</Link> */}
+                <Link className="btn btn-sm border" to={'/register'}>Register New User</Link>
             </div>
         </div>
-
     </div>
   )
 }

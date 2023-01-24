@@ -10,13 +10,14 @@ const UserCocktailList = () => {
     }
 
     const imgStyle = {
-        height: '25vh'
+        height: '12em'
     }
 
     const linkStyle = {
         color: 'black',
         textDecoration: 'none'
     }
+
 
     const [ cocktailList, setCocktailList ] = useState([]);
 
@@ -31,7 +32,7 @@ const UserCocktailList = () => {
 
   return (
     <>
-        <h2 className="mt-3">Newest Cocktails</h2>
+        <h2 className="mt-4">Latest Cocktails</h2>
         <div className="d-flex col-12 col-md-10 mx-auto my-auto flex-wrap" >
             {
                 cocktailList ? cocktailList.slice(0,6).map(drink => (

@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
-const UserCocktail = () => {
+const UserCocktail = ({loggedIn}) => {
 
     const [ cocktail, setCocktail ] = useState({});
     const imgStyle = {
         height: '30vh'
     }
     const {id} = useParams();
+
+    const navigate = useNavigate();
 
     useEffect(()=>{
         axios
@@ -17,9 +19,20 @@ const UserCocktail = () => {
             .catch(err => console.log(err))
     }, [])
 
+    const deleteCocktail = (id) => {
+        axios
+            .delete(`http://localhost:8000/api/delete/${id}`, {withCredentials:true, credentials:'include'})
+            .then((res) => navigate('/'))
+            .catch(err => console.log(err))
+    }
+
+    const divStyle = {
+        minHeight: "60vh"
+    }
+
 
   return (
-    <div className="mt-1">
+    <div className="mt-1" style={divStyle}>
         <h1>{ cocktail.strDrink }</h1>
 
         <div className="d-flex flex-wrap mx-auto col-md-10 col-12 justify-content-between align-items-start">
@@ -71,18 +84,43 @@ const UserCocktail = () => {
                     
                 </table>
             </div>
+            
             <div className="px-5 py-3 col-lg-4 col-12">
                 <h6>Instructions:</h6>
                 <p>{cocktail.strGlass} recommended.</p>
                 { cocktail.strInstructions }
             </div>
         </div>
+        {
+            loggedIn ?
+                <div>
+                    <Link className="btn btn-dark me-3" to={`/edit/${cocktail._id}`}>Edit</Link>
+                    <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                </div>
+            : null
+        }
 
-        <div>
-            <button className="btn btn-success me-3">Edit</button>
-            <button className="btn btn-danger">Delete</button>
+
+
+        <div className="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="modalWarning" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content">
+            <div className="modal-header">
+                <h5 className="modal-title" id="modalWarningText">Warning</h5>
+                <button type="button" className="close btn border" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div className="modal-body">
+                Are you sure you want to delete {cocktail.strDrink}? This cannot be undone.
+            </div>
+            <div className="modal-footer">
+                <button type="button" className="btn btn-dark" data-dismiss="modal">Cancel</button>
+                <button type="button" className="btn btn-danger" onClick={()=>deleteCocktail(cocktail._id)} data-dismiss="modal">Yes, Delete</button>
+            </div>
+            </div>
         </div>
-        
+        </div>
     </div>
   )
 }
