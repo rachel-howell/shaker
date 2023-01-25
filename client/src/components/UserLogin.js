@@ -20,11 +20,9 @@ const UserLogin = (props) => {
         e.preventDefault();
         let pw = userPassword.toString();
         let user = { userEmail, userPassword: pw };
-        console.log(user)
         axios
             .post(`http://localhost:8000/api/login`,user, {withCredentials:true, credentials:'include'})
             .then((res) => {
-                console.log(res)
                 setLoggedIn(true)
                 navigate('/')
             })
@@ -35,7 +33,7 @@ const UserLogin = (props) => {
 
 
   return (
-    <div className="p-4 pt-5" style={divStyle}>
+    <div className="p-4 pt-3" style={divStyle}>
         <h1 className="pt-3">Welcome back!</h1>
         <div className="p-5 pt-3 d-flex mx-auto flex-column col-12 col-md-8 col-lg-5">
             <form onSubmit={submitHandler}>

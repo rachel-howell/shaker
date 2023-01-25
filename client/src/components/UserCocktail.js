@@ -32,7 +32,7 @@ const UserCocktail = ({loggedIn}) => {
 
 
   return (
-    <div className="mt-1" style={divStyle}>
+    <div className="pt-3" style={divStyle}>
         <h1>{ cocktail.strDrink }</h1>
 
         <div className="d-flex flex-wrap mx-auto col-md-10 col-12 justify-content-between align-items-start">
@@ -42,7 +42,7 @@ const UserCocktail = ({loggedIn}) => {
             </div>
 
             <div className="px-5 py-3 col-lg-4 col-12">
-                <h6>Ingredients:</h6>
+                <h5>Ingredients:</h5>
                 <table className="table-borderless col-12">
                     <tbody>
                         <tr>
@@ -86,7 +86,7 @@ const UserCocktail = ({loggedIn}) => {
             </div>
             
             <div className="px-5 py-3 col-lg-4 col-12">
-                <h6>Instructions:</h6>
+                <h5>Instructions:</h5>
                 <p>{cocktail.strGlass} recommended.</p>
                 { cocktail.strInstructions }
             </div>

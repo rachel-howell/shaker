@@ -5,12 +5,11 @@ import axios from 'axios'
 const UserCocktailList = () => {
 
     const divStyle = {
-        height: "35vh",
-        backgroundColor: "yellow"
+        height: "35vh"
     }
 
     const imgStyle = {
-        height: '12em'
+        height: '18em'
     }
 
     const linkStyle = {
@@ -36,8 +35,8 @@ const UserCocktailList = () => {
         <div className="d-flex col-12 col-md-10 mx-auto my-auto flex-wrap" >
             {
                 cocktailList ? cocktailList.slice(0,6).map(drink => (
-                    <div className="d-flex flex-column mx-auto">
-                        <Link to={`/userCocktail/${drink._id}`}><img className="p-2" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link>
+                    <div className="d-flex flex-column mx-auto mb-3 mt-1">
+                        <Link to={`/userCocktail/${drink._id}`}><img className="rounded me-3 mb-1" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link>
                         <Link to={`/userCocktail/${drink._id}`} style={linkStyle}>{drink.strDrink}</Link>
                     </div>
                 )) : <p className="d-flex flex-column mx-auto">Something went wrong.</p>

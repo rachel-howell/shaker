@@ -28,13 +28,13 @@ const Search = () => {
         <div className="col-8 mx-auto vh-75">
             <h1>Cocktail Recipe Search</h1>
             
-            <form className="p-3 d-flex flex-column col-12 col-md-6 mx-auto" onSubmit={submitHandler}>
+            <form className="p-3 d-flex flex-column col-12 col-lg-6 mx-auto" onSubmit={submitHandler}>
 
                 <div className="mb-3">
                     <input className="form-control" type="text" placeholder="Type search here..." onChange={(e)=>setUserInput(e.target.value)}/>
                 </div>
 
-                <div className="d-flex mx-auto mb-3">
+                <div className="d-flex mx-auto mb-2">
                     <h6>Search by:</h6>
                     <div className="px-3 d-flex flex-column align-items-start">
                         <div className="form-check">

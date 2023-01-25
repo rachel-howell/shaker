@@ -23,7 +23,7 @@ const CocktailDetails = () => {
     }, [])
     
   return (
-    <div className="mt-1">
+    <div className="pt-3">
         <h1>{ cocktail.strDrink }</h1>
 
         <div className="d-flex flex-wrap mx-auto col-md-10 col-12 justify-content-between align-items-start" style={divStyle}>
@@ -33,7 +33,7 @@ const CocktailDetails = () => {
             </div>
 
             <div className="px-5 py-3 col-lg-4 col-12">
-                <h6>Ingredients:</h6>
+                <h5>Ingredients:</h5>
                 <table className="table-borderless col-12">
                     <tbody>
                         <tr>
@@ -76,7 +76,7 @@ const CocktailDetails = () => {
                 </table>
             </div>
             <div className="px-5 py-3 col-lg-4 col-12">
-                <h6>Instructions:</h6>
+                <h5>Instructions:</h5>
                 <p>{cocktail.strGlass} recommended.</p>
                 { cocktail.strInstructions }
             </div>

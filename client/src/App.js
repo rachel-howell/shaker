@@ -22,7 +22,6 @@ function App() {
   const [ loggedIn, setLoggedIn ] = useState(false);
 
   useEffect(()=>{
-    console.log("triggered")
     axios
       .get('http://localhost:8000/api/checkloginstatus', {withCredentials:true, credentials:'include'})
       .then((res)=> {

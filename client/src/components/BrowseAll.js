@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const BrowseAll = () => {
 
   const imgStyle = {
-    height: '12em'
+    height: '18em'
   }
 
   const linkStyle = {
@@ -72,16 +72,16 @@ const BrowseAll = () => {
       <div className="d-flex flex-wrap col-lg-10 col-12 mx-auto mb-3">
         {
           userCocktailList ? userCocktailList.map(drink => (
-              <div className="d-flex flex-column mx-auto">
-                  <Link to={`/userCocktail/${drink._id}`}><img className="p-2" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link>
+              <div className="d-flex flex-column mx-auto mb-3 mt-1">
+                  <Link to={`/userCocktail/${drink._id}`}><img src={drink.strDrinkThumb} alt="Drink" className="rounded me-3 mb-1" style={imgStyle}/></Link>
                   <Link to={`/userCocktail/${drink._id}`} style={linkStyle}>{drink.strDrink}</Link>
               </div>
           )) : null
         }
         {
           cocktailList ? cocktailList.map(drink => (
-              <div className="d-flex flex-column mx-auto">
-                  <Link to={`/details/${drink.idDrink}`}><img className="p-2" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link>
+              <div className="d-flex flex-column mx-auto mb-3 mt-1">
+                  <Link to={`/details/${drink.idDrink}`}><img src={drink.strDrinkThumb} className="rounded me-3 mb-1" alt="Drink" style={imgStyle}/></Link>
                   <Link to={`/details/${drink.idDrink}`} style={linkStyle}>{drink.strDrink}</Link>
               </div>
           )) : <p className="d-flex flex-column mx-auto">No cocktails found :(</p>

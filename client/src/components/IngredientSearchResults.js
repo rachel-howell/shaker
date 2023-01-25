@@ -7,8 +7,14 @@ const IngredientSearchResults = () => {
     const [ cocktailList, setCocktailList ] = useState([]);
     const [ newSearch, setNewSearch ] = useState("");
     const { ingredient } = useParams();
+    
     const imgStyle = {
-        height: '28vh'
+        height: '18em'
+    }
+
+    const linkStyle = {
+        color: 'black',
+        textDecoration: 'none'
     }
     const divStyle = {
         minHeight: '50vh'
@@ -42,7 +48,7 @@ const IngredientSearchResults = () => {
         <div className="container d-flex flex-column align-items-start col-12 col-md-6 my-2">
             <h5 className="ms-3">Search results for...</h5>
             <form className="form-control d-flex border-0" onSubmit={submitHandler}>
-                <input className="me-3 border form-control" type="text" placeholder={ingredient} onChange={(e)=>setNewSearch(e.target.value)}/>
+                <input className="me-3 border form-control" type="text" defaultValue={ingredient} onChange={(e)=>setNewSearch(e.target.value)}/>
                 <input className="btn border" type="submit" />
             </form>
         </div>
@@ -50,8 +56,8 @@ const IngredientSearchResults = () => {
             {
                 cocktailList ? cocktailList.map(drink => (
                     <div className="d-flex flex-column mx-auto">
-                        <img className="p-3 rounded" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/>
-                        <Link className="text-wrap" to={`/details/${drink.idDrink}`}>{drink.strDrink}</Link>
+                        <Link to={`/details/${drink.idDrink}`}><img className="my-2 rounded" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link>
+                        <Link style={linkStyle} className="text-wrap" to={`/details/${drink.idDrink}`}>{drink.strDrink}</Link>
                     </div>
                 )) : <p className="d-flex flex-column mx-auto">No results found. Try a different search.</p>
             }
