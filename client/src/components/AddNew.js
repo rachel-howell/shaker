@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
-const AddNew = () => {
+const AddNew = ({email}) => {
 
     const [ cocktailName, setCocktailName ] = useState("");
     const [ ingredientOne, setIngredientOne ] = useState("");
@@ -50,11 +50,8 @@ const AddNew = () => {
             strMeasure6: quantitySix,
             strMeasure7: quantitySeven,
             strInstructions: instructions,
-            creator: creator
+            creator: email
         }
-
-        console.log(newCocktail)
-        console.log(newCocktail.strDrink)
 
         axios
             .post(`http://localhost:8000/api/create`, newCocktail, {withCredentials:true, credentials:'include'})

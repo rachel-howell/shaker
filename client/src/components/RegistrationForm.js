@@ -2,15 +2,14 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-const RegistrationForm = (props) => {
+const RegistrationForm = ({setLoggedIn, setEmail}) => {
 
     const [ userEmail, setUserEmail ] = useState("");
     const [ username, setUsername ] = useState("");
     const [ userPassword, setUserPassword ] = useState("");
     const [ errors, setErrors ] = useState([]);
     const [ match, setMatch ] = useState(true);
-
-    const { loggedIn, setLoggedIn } = props;
+    const [ emailIsValid, setEmailIsValid ] = useState(true);
 
     const phantomDiv = {
         height: '7vh'
@@ -26,14 +25,25 @@ const RegistrationForm = (props) => {
         }
     }
 
+    const validateEmail = (userEmail) => {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(userEmail)){
+            return true;
+        } else{
+            setEmailIsValid(false);
+            return false;
+        }
+    }
+
+
     const submitHandler = (e) => {
         e.preventDefault();
-        if(match){
+        if(match && validateEmail(userEmail)){
             let newUser = { username: username, email: userEmail, password: userPassword}
             axios
                 .post(`http://localhost:8000/api/register`, newUser, {withCredentials:true, credentials:'include'})
                 .then((res) => {
                     setLoggedIn(true)
+                    setEmail(userEmail)
                     navigate('/')
                 })
                 .catch(err => {
@@ -52,6 +62,9 @@ const RegistrationForm = (props) => {
                     <label className="form-label">Email</label>
                     {
                         errors.email ? <p className="text-danger">{errors.email.message}</p> : null
+                    }
+                    {
+                        emailIsValid ? null : <p className="text-danger">Please enter a valid email.</p>
                     }
                 </div>
                 <div className="form-floating mb-3">

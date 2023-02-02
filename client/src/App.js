@@ -20,6 +20,7 @@ import axios from 'axios';
 function App() {
 
   const [ loggedIn, setLoggedIn ] = useState(false);
+  const [ email, setEmail ] = useState("");
 
   useEffect(()=>{
     axios
@@ -27,6 +28,7 @@ function App() {
       .then((res)=> {
         if(res.data == "true"){
           setLoggedIn(true);
+          console.log(email)
         }else{
           setLoggedIn(false);
         }
@@ -48,11 +50,11 @@ function App() {
           <Route path="/isearch/:ingredient" element={<IngredientSearchResults />} />
           <Route path="/isearch/" element={<IngredientSearchResults />} />
           <Route path="/browse" element={<BrowseAll />} />
-          <Route path="/login" element={<UserLogin loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>} />
+          <Route path="/login" element={<UserLogin setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
           <Route path="/favorites" element={<Favorites />} />
-          <Route path="/addNew" element={<AddNew />} />
-          <Route path="/userCocktail/:id" element={<UserCocktail loggedIn={loggedIn} />} />
-          <Route path="/register" element={<RegistrationForm loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
+          <Route path="/addNew" element={<AddNew email={email}/>} />
+          <Route path="/userCocktail/:id" element={<UserCocktail loggedIn={loggedIn} email={email}/>} />
+          <Route path="/register" element={<RegistrationForm loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail}/>} />
           <Route path="/edit/:id" element={<EditCocktail />} />
         </Routes>
       <Footer />
