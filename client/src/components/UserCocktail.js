@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
-const UserCocktail = ({loggedIn}) => {
+const UserCocktail = ({loggedIn, email}) => {
 
     const [ cocktail, setCocktail ] = useState({});
+    const [ creator, setCreator ] = useState(false);
+
     const imgStyle = {
         height: '30vh'
     }
@@ -15,9 +17,20 @@ const UserCocktail = ({loggedIn}) => {
     useEffect(()=>{
         axios
             .get(`http://localhost:8000/api/getOne/${id}`)
-            .then((res) => setCocktail(res.data))
-            .catch(err => console.log(err))
+            .then((res) => {
+                isCreator(res.data)
+            })
+            .catch(err => console.log(err));
     }, [])
+
+    const isCreator = (cocktail) => {
+        setCocktail(cocktail)
+        if(cocktail.creator == email) {
+            setCreator(true)
+        } else {
+            setCreator(false)
+        }
+    }
 
     const deleteCocktail = (id) => {
         axios
@@ -92,7 +105,7 @@ const UserCocktail = ({loggedIn}) => {
             </div>
         </div>
         {
-            loggedIn ?
+            creator ?
                 <div>
                     <Link className="btn btn-dark me-3" to={`/edit/${cocktail._id}`}>Edit</Link>
                     <button type="button" className="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>

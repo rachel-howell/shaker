@@ -2,13 +2,11 @@ import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import axios from 'axios'
 
-const UserLogin = (props) => {
+const UserLogin = ({setLoggedIn, setEmail}) => {
 
     const [ userEmail, setUserEmail ] = useState("");
     const [ userPassword, setUserPassword ] = useState("");
     const [ errors, setErrors ] = useState([]);
-
-    const { loggedIn, setLoggedIn } = props;
     const navigate = useNavigate();
 
     const divStyle = {
@@ -20,8 +18,9 @@ const UserLogin = (props) => {
         e.preventDefault();
         let pw = userPassword.toString();
         let user = { userEmail, userPassword: pw };
+        setEmail(userEmail);
         axios
-            .post(`http://localhost:8000/api/login`,user, {withCredentials:true, credentials:'include'})
+            .post(`http://localhost:8000/api/login`, user, {withCredentials:true, credentials:'include'})
             .then((res) => {
                 setLoggedIn(true)
                 navigate('/')
