@@ -51,7 +51,7 @@ const UserCocktail = ({loggedIn, email}) => {
         <div className="d-flex flex-wrap mx-auto col-md-10 col-12 justify-content-between align-items-start">
 
             <div className="col-lg-4 col-12">
-                <img src={cocktail.strDrinkThumb} style={imgStyle} className="img-fluid rounded float-left"/>
+                <img src={cocktail.strDrinkThumb} style={imgStyle} className="img-fluid rounded float-left" alt="beverage image"/>
             </div>
 
             <div className="px-5 py-3 col-lg-4 col-12">

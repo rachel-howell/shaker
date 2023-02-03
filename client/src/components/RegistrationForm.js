@@ -11,10 +11,6 @@ const RegistrationForm = ({setLoggedIn, setEmail}) => {
     const [ match, setMatch ] = useState(true);
     const [ emailIsValid, setEmailIsValid ] = useState(true);
 
-    const phantomDiv = {
-        height: '7vh'
-    }
-
     const navigate = useNavigate();
 
     const passwordsMatch = (checkpassword) => {
@@ -91,7 +87,6 @@ const RegistrationForm = ({setLoggedIn, setEmail}) => {
                 <input className="btn btn-dark mb-2" type="submit" />
             </form>
         </div>
-        <div style={phantomDiv}></div>
     </div>
   )
 }

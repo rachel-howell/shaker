@@ -7,7 +7,7 @@ require('./config/mongoose.config');
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-const whitelist = ["http://localhost:3000","http://127.0.0.1", "http://34.219.71.254/"]
+const whitelist = ["http://localhost:3000","http://127.0.0.1", "http://34.219.71.254/", "http://shakerr.io"]
 const corsOptions = {
     origin: (origin, callback) => {
         // if (!origin || whitelist.indexOf(origin) !== -1) {
