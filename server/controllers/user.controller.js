@@ -48,6 +48,9 @@ module.exports = {
         } else{
             res.json("true");
         }
+    },
+    getFavorites: (req,res)=>{
+        
     }
 
 }
