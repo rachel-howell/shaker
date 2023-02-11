@@ -13,6 +13,10 @@ const RegistrationForm = ({setLoggedIn, setEmail}) => {
 
     const navigate = useNavigate();
 
+    const divStyle = {
+        minHeight: '58vh'
+    }
+
     const passwordsMatch = (checkpassword) => {
         if(userPassword == checkpassword ) {
             setMatch(true)
@@ -29,6 +33,7 @@ const RegistrationForm = ({setLoggedIn, setEmail}) => {
             return false;
         }
     }
+    
 
 
     const submitHandler = (e) => {
@@ -38,9 +43,7 @@ const RegistrationForm = ({setLoggedIn, setEmail}) => {
             axios
                 .post(`http://localhost:8000/api/register`, newUser, {withCredentials:true, credentials:'include'})
                 .then((res) => {
-                    setLoggedIn(true)
-                    setEmail(userEmail)
-                    navigate('/')
+                    navigate('/success')
                 })
                 .catch(err => {
                     setErrors(err.response.data.errors)
@@ -49,7 +52,7 @@ const RegistrationForm = ({setLoggedIn, setEmail}) => {
     }
 
   return (
-    <div className="p-4 pt-3">
+    <div className="p-4 pt-3" style={divStyle}>
         <h1>Register New User</h1>
         <div className="p-5 pt-3 d-flex mx-auto flex-column col-12 col-md-8 col-lg-5">
             <form onSubmit={submitHandler}>

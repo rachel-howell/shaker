@@ -7,7 +7,6 @@ import SearchResults from './components/SearchResults';
 import IngredientSearchResults from './components/IngredientSearchResults';
 import Footer from './components/Footer';
 import UserLogin from './components/UserLogin';
-import Favorites from './components/Favorites';
 import AddNew from './components/AddNew';
 import UserCocktail from './components/UserCocktail';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -16,6 +15,7 @@ import { useEffect, useState } from 'react'
 import RegistrationForm from './components/RegistrationForm';
 import EditCocktail from './components/EditCocktail';
 import axios from 'axios';
+import ThankYou from './components/ThankYou';
 
 function App() {
 
@@ -51,7 +51,7 @@ function App() {
           <Route path="/isearch/" element={<IngredientSearchResults />} />
           <Route path="/browse" element={<BrowseAll />} />
           <Route path="/login" element={<UserLogin setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/success" element={<ThankYou />} />
           <Route path="/addNew" element={<AddNew email={email}/>} />
           <Route path="/userCocktail/:id" element={<UserCocktail loggedIn={loggedIn} email={email}/>} />
           <Route path="/register" element={<RegistrationForm loggedIn={loggedIn} setLoggedIn={setLoggedIn} setEmail={setEmail}/>} />
