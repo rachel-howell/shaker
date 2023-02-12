@@ -17,18 +17,18 @@ module.exports = {
         const user = await User.findOne({email:req.body.userEmail})
         // console.log("email", req.body.userEmail)
         if(!user) {
-            return res.status(400).json({error:"Invalid email or password. A"})
+            return res.status(400).json({error:"Invalid email or password."})
         }
         try{
             const isPasswordValid = await bcrypt.compare(req.body.userPassword, user.password)
             if(!isPasswordValid){
-                return res.status(400).json({error:"Invalid email or password. B"})
+                return res.status(400).json({error:"Invalid email or password."})
             }else{
                 const userToken = jwt.sign({_id:user._id},SECRET)
                 return res.status(201).cookie('userToken',userToken,{httpOnly:true,expires:new Date(Date.now() + 900000)}).json({successMessage:"User logged in",user:user})
             }
         }catch(error){
-            return res.status(400).json({error:"Invalid email or password. c"})
+            return res.status(400).json({error:"Invalid email or password."})
         }
     },
     logOutUser: (req,res) => {
@@ -49,8 +49,10 @@ module.exports = {
             res.json("true");
         }
     },
-    getFavorites: (req,res)=>{
-        
+    updateUserFavorite: (req,res) => {
+        User.findOneAndUpdate({email: req.email}, {favorites: req.favorites})
+        .then(user => res.json(user))
+        .catch(err => res.status(400).json(err))
     }
 
 }

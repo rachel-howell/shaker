@@ -44,7 +44,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Search />}/>
           <Route path="/random" element={<RandomCocktail />}/>
-          <Route path="/details/:id" element={<CocktailDetails />}/>
+          <Route path="/details/:id" element={<CocktailDetails email={email}/>}/>
           <Route path="/search/:name" element={<SearchResults />}/>
           <Route path="/search/" element={<SearchResults />}/>
           <Route path="/isearch/:ingredient" element={<IngredientSearchResults />} />

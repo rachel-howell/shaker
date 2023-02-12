@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const CocktailDetails = () => {
+const CocktailDetails = ({email}) => {
 
     const [ cocktail, setCocktail ] = useState("");
     const imgStyle = {
@@ -13,6 +13,19 @@ const CocktailDetails = () => {
 
     const divStyle = {
         minHeight: "52vh"
+    }
+
+    const saveDrink = (id) =>{
+        axios // This axios call will get the user's current list of favorites.
+            .get(`https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=${id}`)
+            .then((res) => setCocktail(res.data.drinks[0]))
+            .catch(err => console.log(err))
+        let currentFaves = // This array will add the new cocktail to the current list of favorites.
+        axios.put // This axios call will communicate with the internal database to update the user's list of favorite cocktails with the new array created above.
+            .get(`https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=${id}`)
+            .then((res) => setCocktail(res.data.drinks[0]))
+            .catch(err => console.log(err))
+
     }
 
     useEffect(()=>{
@@ -83,7 +96,7 @@ const CocktailDetails = () => {
         </div>
 
         {/* <div className="btn-group" role="group" aria-label="Basic outlined example">
-            <button type="button" className="btn btn-outline-danger">Save</button>
+            <button type="button" className="btn btn-outline-danger" onClick={()=>saveDrink(cocktail._id)}>Save</button>
             <button type="button" className="btn btn-outline-danger">Share</button>
         </div> */}
         
