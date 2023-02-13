@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import React, { useState, useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { UserContext } from './UserContext';
 
-const AddNew = ({email}) => {
+const AddNew = () => {
 
     const [ cocktailName, setCocktailName ] = useState("");
     const [ ingredientOne, setIngredientOne ] = useState("");
@@ -26,6 +27,7 @@ const AddNew = ({email}) => {
     const [ errors, setErrors ] = useState([]);
     const [ uniqueError, setUniqueError ] = useState(false)
     const [ authError, setAuthError ] = useState(false)
+    const { username } = useContext(UserContext);
 
     const navigate = useNavigate();
 
@@ -50,7 +52,7 @@ const AddNew = ({email}) => {
             strMeasure6: quantitySix,
             strMeasure7: quantitySeven,
             strInstructions: instructions,
-            creator: email
+            creator: username
         }
 
         axios
@@ -67,17 +69,6 @@ const AddNew = ({email}) => {
                 } else if(err.response.status == 401){
                     setAuthError(true)
                 } 
-                // else{
-                //     if(!err.response.data.code){
-                //         setUniqueError(false)
-                //     }
-                //     if(!err.response.status){
-                //         setAuthError(false)
-                //     }
-                //     if(!err.response.data.errors){
-                //         setErrors([]);
-                //     }
-                // }
                 console.log("ERR", err)
             })
     }

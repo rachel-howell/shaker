@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from './UserContext';
 import MenuIcon from '@mui/icons-material/Menu';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -6,11 +7,11 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios'
 
 
-const NavBar = (props) => {
+const NavBar = () => {
 
     const navigate = useNavigate();
 
-    const { loggedIn, setLoggedIn } = props;
+    const { loggedIn, setLoggedIn } = useContext(UserContext);
 
     const homeBtn = () => {
         navigate('/')

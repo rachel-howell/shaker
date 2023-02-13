@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-const RegistrationForm = ({setLoggedIn, setEmail}) => {
+const RegistrationForm = () => {
 
     const [ userEmail, setUserEmail ] = useState("");
     const [ username, setUsername ] = useState("");
