@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { UserContext } from './UserContext';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 
-const UserCocktail = ({loggedIn, email}) => {
+const UserCocktail = () => {
 
     const [ cocktail, setCocktail ] = useState({});
     const [ creator, setCreator ] = useState(false);
+    const { loggedIn, email } = useContext(UserContext);
 
     const imgStyle = {
         height: '30vh'
