@@ -5,6 +5,7 @@ import axios from 'axios';
 const CocktailDetails = ({email}) => {
 
     const [ cocktail, setCocktail ] = useState("");
+    
     const imgStyle = {
         height: '30vh'
     }

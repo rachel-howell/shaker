@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import Trending from './Trending';
-import UserCocktailList from './UserCocktailList';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import CocktailCollection from './CocktailCollection';
 
 const Search = () => {
 
@@ -21,6 +20,11 @@ const Search = () => {
     const toggleSearch = (e) => {
         setSearchByName(!searchByName);
         console.log(searchByName)
+    }
+
+    let collections = {
+        userCocktails: 'http://localhost:8000/api/getAll',
+        trendingCocktails: `https://www.thecocktaildb.com/api/json/v2/9973533/popular.php`
     }
 
   return (
@@ -60,10 +64,10 @@ const Search = () => {
         </div>
 
         <div>
-            <Trending />
+            <CocktailCollection url={collections.userCocktails} title={'User-Created Cocktails'} numToDisplay={6}/>
         </div>
         <div>
-            <UserCocktailList />
+            <CocktailCollection url={collections.trendingCocktails} title={'Popular Cocktails'} numToDisplay={6}/>
         </div>
     </div>
   )
