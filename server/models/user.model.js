@@ -20,6 +20,9 @@ const UserSchema = new mongoose.Schema({
     },
     favorites: {
         type: Array
+    },
+    collections: {
+        type: Array
     }
 }, { timestamps: true });
 

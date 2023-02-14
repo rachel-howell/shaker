@@ -50,9 +50,13 @@ module.exports = {
         }
     },
     updateUserFavorite: (req,res) => {
-        User.findOneAndUpdate({email: req.email}, {favorites: req.favorites})
+        User.findOneAndUpdate({_id: req._id}, {$push: {favorites: req.body}})
         .then(user => res.json(user))
         .catch(err => res.status(400).json(err))
+    },
+    getFavorites: (req,res) => {
+        User.findById({id: req.body})
+        .then(user => res.json(user.favorites))
+        .catch(err => res.status(400).json(err))
     }
-
 }

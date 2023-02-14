@@ -7,7 +7,7 @@ const UserLogin = () => {
 
     const [ userEmail, setUserEmail ] = useState("");
     const [ userPassword, setUserPassword ] = useState("");
-    const { setLoggedIn, setEmail, setUsername, email, username } = useContext(UserContext);
+    const { setLoggedIn, setEmail, setUsername, setUserId, setCollections } = useContext(UserContext);
     const [ errors, setErrors ] = useState([]);
     const navigate = useNavigate();
 
@@ -20,7 +20,6 @@ const UserLogin = () => {
         e.preventDefault();
         let pw = userPassword.toString();
         let user = { userEmail, userPassword: pw };
-        // setEmail(userEmail);
         axios
             .post(`http://localhost:8000/api/login`, user, {withCredentials:true, credentials:'include'})
             .then((res) => {
@@ -28,7 +27,8 @@ const UserLogin = () => {
                 setLoggedIn(true)
                 setUsername(res.data.user.username)
                 setEmail(res.data.user.username)
-                console.log(email, username)
+                setUserId(res.data.user._id)
+                setCollections(res.data.user.collections)
                 navigate('/')
             })
             .catch(err => {

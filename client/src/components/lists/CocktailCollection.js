@@ -2,11 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-const CocktailCollection = ({url,title,numToDisplay}) => {
-
-    const divStyle = {
-        height: "35vh"
-    }
+const CocktailCollection = ({url, title ,numToDisplay, id}) => {
 
     const imgStyle = {
         height: '23vh'
@@ -24,7 +20,6 @@ const CocktailCollection = ({url,title,numToDisplay}) => {
             .get(url)
             .then((res) => 
             res.data.drinks ? setCocktailList(res.data.drinks) : setCocktailList(res.data)
-
             )
             .catch(err => {
                 console.log(err)

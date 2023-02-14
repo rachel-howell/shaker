@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CocktailCollection from './lists/CocktailCollection';
 
-const Search = () => {
+const Homepage = () => {
 
     const navigate = useNavigate();
     const [ userInput, setUserInput ] = useState("");
@@ -64,7 +64,7 @@ const Search = () => {
         </div>
 
         <div>
-            <CocktailCollection url={collections.userCocktails} title={'User-Created Cocktails'} numToDisplay={6}/>
+            <CocktailCollection url={collections.userCocktails} title={'Newest Cocktails'} numToDisplay={6}/>
         </div>
         <div>
             <CocktailCollection url={collections.trendingCocktails} title={'Popular Cocktails'} numToDisplay={6}/>
@@ -73,4 +73,8 @@ const Search = () => {
   )
 }
 
-export default Search
+export default Homepage
+
+// user is looking at collection and clicks the collection name
+// onClick, user is directed to ViewCollection page and collection id is passed to the component
+// Component displays title, description, and all drinks in the collection

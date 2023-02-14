@@ -50,6 +50,7 @@ const UserCocktail = () => {
   return (
     <div className="pt-3" style={divStyle}>
         <h1>{ cocktail.strDrink }</h1>
+        <p>Added by: {cocktail.creator}</p>
 
         <div className="d-flex flex-wrap mx-auto col-md-10 col-12 justify-content-between align-items-start">
 
@@ -118,8 +119,8 @@ const UserCocktail = () => {
 
 
 
-        <div className="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="modalWarning" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div className="modal fade" id="deleteModal" tabIndex="-1" role="dialog" aria-labelledby="modalWarning" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
             <div className="modal-header">
                 <h5 className="modal-title" id="modalWarningText">Warning</h5>
@@ -131,7 +132,7 @@ const UserCocktail = () => {
                 Are you sure you want to delete {cocktail.strDrink}? This cannot be undone.
             </div>
             <div className="modal-footer">
-                <button type="button" className="btn btn-dark" data-dismiss="modal">Cancel</button>
+                <button type="button" className="btn btn-dark" dataDismiss="modal">Cancel</button>
                 <button type="button" className="btn btn-danger" onClick={()=>deleteCocktail(cocktail._id)} data-dismiss="modal">Yes, Delete</button>
             </div>
             </div>

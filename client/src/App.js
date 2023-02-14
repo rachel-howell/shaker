@@ -22,7 +22,7 @@ import ViewCollection from './components/lists/ViewCollection';
 
 function App() {
 
-  const { email, setEmail, loggedIn, setLoggedIn } = useContext(UserContext);
+  const { loggedIn, setLoggedIn } = useContext(UserContext);
 
   useEffect(()=>{
     axios
@@ -30,7 +30,6 @@ function App() {
       .then((res)=> {
         if(res.data == "true"){
           setLoggedIn(true);
-          console.log(email)
         }else{
           setLoggedIn(false);
         }
