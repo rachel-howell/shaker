@@ -7,11 +7,12 @@ const UserCocktail = () => {
 
     const [ cocktail, setCocktail ] = useState({});
     const [ creator, setCreator ] = useState(false);
-    const { loggedIn, email } = useContext(UserContext);
+    const { email } = useContext(UserContext);
 
     const imgStyle = {
         height: '30vh'
     }
+    
     const {id} = useParams();
 
     const navigate = useNavigate();
