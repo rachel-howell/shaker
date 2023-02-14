@@ -33,6 +33,9 @@ Routes(app)
 const CocktailRoutes = require('./routes/cocktail.routes')
 CocktailRoutes(app)
 
+const CollectionRoutes = require('./routes/collection.routes')
+CollectionRoutes(app)
+
 app.listen(PORT, ()=>{
     console.log(`Server is up and running at port ${PORT}.`)
 })
