@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CocktailCollection from './CocktailCollection';
+import CocktailCollection from './lists/CocktailCollection';
 
 const Search = () => {
 
