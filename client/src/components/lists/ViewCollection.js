@@ -23,7 +23,7 @@ const ViewCollection = () => {
             .get(`http://localhost:8000/api/viewcollection/${id}`)
             .then((res)=>(setColl(res.data)))
             .catch(err=>console.log(err))
-          setCocktailList(coll.drinks)
+          console.log(coll.drinkList)
     }, [])
 
 
@@ -37,9 +37,9 @@ const ViewCollection = () => {
           cocktailList ? cocktailList.map(drink => (
               <div className="d-flex flex-column mx-auto mb-3 mt-1">
                   {
-                    drink.idDrink ? 
+                    drink.name ? 
                     <>
-                    <Link to={`/details/${drink.idDrink}`}><img className="rounded mb-1" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link> 
+                    <Link to={`/details/${drink.key}`}><img className="rounded mb-1" src={drink.name} alt="Drink" style={imgStyle}/></Link> 
                     <Link to={`/details/${drink.idDrink}`} style={linkStyle}>{drink.strDrink}</Link> 
                     </> : null
                   }

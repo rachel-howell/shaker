@@ -26,6 +26,8 @@ const CocktailCollection = ({url, title ,numToDisplay, id}) => {
             })
     }, [])
 
+    // onClick function that will pass the id of the collection to the ViewCollection component
+
   return (
     <>
         <h2 className="mt-4">{title}</h2>
