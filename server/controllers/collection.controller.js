@@ -25,5 +25,10 @@ module.exports = {
         Collection.findOneAndDelete({_id: req.params.id})
             .then(collection => res.json(collection))
             .catch(err => res.status(400).json(err))
+    },
+    addDrinkToCollection: (req,res) => {
+        Collection.findOneAndUpdate({_id: req.params.id}, { $push: { drinkList: req.body }}, {new: true})
+            .then(collection => res.json(collection))
+            .catch(err => res.status(400).json(err))
     }
 }

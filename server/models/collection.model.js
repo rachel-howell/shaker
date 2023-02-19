@@ -9,8 +9,22 @@ const CollectionSchema = new mongoose.Schema({
     description: {
         type: String
     },
-    drinks: {
-        type: Array
+    drinkList: [{
+        key: {
+            type: String
+        },
+        strDrinkThumb: {
+            type: String
+        },
+        strDrink: {
+            type: String
+        }
+    }],
+    creator: {
+        type: String
+    },
+    privacy: {
+        type: Boolean
     }
 }, { timestamps: true })
 

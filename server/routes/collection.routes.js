@@ -6,4 +6,5 @@ module.exports = (app) => {
     app.get('/api/viewcollection/:id', CollectionController.getCollectionById)
     app.put('/api/updatecollection/:id', CollectionController.updateCollection)
     app.delete('/api/deletecollection/:id', CollectionController.deleteCollection)
+    app.put('/api/addtocollection/:id', CollectionController.addDrinkToCollection)
 }

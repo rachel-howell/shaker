@@ -19,10 +19,11 @@ import { UserContext, UserProvider } from './components/UserContext';
 import React, { useContext } from 'react';
 import Homepage from './components/Homepage'
 import ViewCollection from './components/lists/ViewCollection';
+import NewCollection from './components/userforms/NewCollection';
 
 function App() {
 
-  const { email, setEmail, loggedIn, setLoggedIn } = useContext(UserContext);
+  const { loggedIn, setLoggedIn } = useContext(UserContext);
 
   useEffect(()=>{
     axios
@@ -30,7 +31,6 @@ function App() {
       .then((res)=> {
         if(res.data == "true"){
           setLoggedIn(true);
-          console.log(email)
         }else{
           setLoggedIn(false);
         }
@@ -60,6 +60,7 @@ function App() {
             <Route path="/success" element={<ThankYou />} />
             <Route path="/edit/:id" element={<EditCocktail />} />
             <Route path="/viewcollection/:id" element={<ViewCollection />} />
+            <Route path="/addcollection" element={<NewCollection />} />
           </Routes>
         <Footer />
         </BrowserRouter>
