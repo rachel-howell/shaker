@@ -17,19 +17,23 @@ const ViewCollection = () => {
       textDecoration: 'none'
   }
 
+  const divStyle = {
+    minHeight: '60vh'
+}
+
 
     useEffect(()=>{
         axios
             .get(`http://localhost:8000/api/viewcollection/${id}`)
             .then((res)=>(setColl(res.data)))
             .catch(err=>console.log(err))
-          console.log(coll.drinkList)
+          setCocktailList(coll.drinkList)
     }, [])
 
 
 
   return (
-    <div>
+    <div style={divStyle}>
       <p className="h1">{coll.title}</p>
       <p>{coll.description}</p>
       <div className="d-flex col-12 col-md-10 mx-auto my-auto flex-wrap" >
@@ -37,17 +41,10 @@ const ViewCollection = () => {
           cocktailList ? cocktailList.map(drink => (
               <div className="d-flex flex-column mx-auto mb-3 mt-1">
                   {
-                    drink.name ? 
+                    drink.key ? 
                     <>
-                    <Link to={`/details/${drink.key}`}><img className="rounded mb-1" src={drink.name} alt="Drink" style={imgStyle}/></Link> 
+                    <Link to={`/details/${drink.key}`}><img className="rounded mb-1" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link> 
                     <Link to={`/details/${drink.idDrink}`} style={linkStyle}>{drink.strDrink}</Link> 
-                    </> : null
-                  }
-                  {
-                    drink._id ? 
-                    <>
-                    <Link to={`/userCocktail/${drink._id}`}><img className="rounded mb-1" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link> 
-                    <Link to={`/userCocktail/${drink._id}`} style={linkStyle}>{drink.strDrink}</Link> 
                     </> : null
                   }
               </div>

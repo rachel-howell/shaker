@@ -18,9 +18,6 @@ const UserSchema = new mongoose.Schema({
         required: [true, "Password is required."],
         minLength: [4, "Password must be 4 characters or longer."]
     },
-    favorites: {
-        type: Array
-    },
     collections: {
         type: Array
     }

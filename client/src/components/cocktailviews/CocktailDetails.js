@@ -6,7 +6,7 @@ import { UserContext } from '../UserContext';
 const CocktailDetails = () => {
 
     const [ cocktail, setCocktail ] = useState("");
-    const { user } = useContext(UserContext);
+    const { user, collections } = useContext(UserContext);
     
     const imgStyle = {
         height: '30vh'
@@ -33,8 +33,8 @@ const CocktailDetails = () => {
     const addToCollection = (collId) => {
         const newDrink = {
             key: cocktail.idDrink,
-            thumbnail: cocktail.strDrinkThumb,
-            name: cocktail.strDrink
+            strDrinkThumb: cocktail.strDrinkThumb,
+            strDrink: cocktail.strDrink
         }
 
         axios
@@ -125,6 +125,10 @@ const CocktailDetails = () => {
             </div>
             <div className="modal-body">
                 To which collection would you like to add this drink?
+                {
+                    collections ? 
+                    collections.map(collection => <p>{collection.title}</p>) : "no"
+                }
             </div>
             <div className="modal-footer">
                 <button type="button" className="btn btn-dark" data-dismiss="modal">Cancel</button>

@@ -13,17 +13,17 @@ const CollectionSchema = new mongoose.Schema({
         key: {
             type: String
         },
-        thumbnail: {
+        strDrinkThumb: {
             type: String
         },
-        name: {
+        strDrink: {
             type: String
         }
     }],
     creator: {
         type: String
     },
-    private: {
+    privacy: {
         type: Boolean
     }
 }, { timestamps: true })
