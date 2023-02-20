@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-const CocktailCollection = ({url, title ,numToDisplay, id}) => {
+const CocktailCollection = ({url, title, numToDisplay, id}) => {
 
     const imgStyle = {
         height: '23vh'
