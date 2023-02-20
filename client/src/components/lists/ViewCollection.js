@@ -41,6 +41,7 @@ const ViewCollection = () => {
           cocktailList ? cocktailList.map(drink => (
               <div className="d-flex flex-column mx-auto mb-3 mt-1">
                   {
+          
                     drink.key ? 
                     <>
                     <Link to={`/details/${drink.key}`}><img className="rounded mb-1" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link> 

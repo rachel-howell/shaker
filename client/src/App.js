@@ -20,6 +20,7 @@ import React, { useContext } from 'react';
 import Homepage from './components/Homepage'
 import ViewCollection from './components/lists/ViewCollection';
 import NewCollection from './components/userforms/NewCollection';
+import ViewAllCollections from './components/lists/ViewAllCollections';
 
 function App() {
 
@@ -61,6 +62,7 @@ function App() {
             <Route path="/edit/:id" element={<EditCocktail />} />
             <Route path="/viewcollection/:id" element={<ViewCollection />} />
             <Route path="/addcollection" element={<NewCollection />} />
+            <Route path="/browsecollections" element={< ViewAllCollections />} />
           </Routes>
         <Footer />
         </BrowserRouter>

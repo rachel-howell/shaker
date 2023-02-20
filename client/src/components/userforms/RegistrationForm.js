@@ -60,7 +60,7 @@ const RegistrationForm = () => {
                     <input className="form-control" type="text" onChange={(e)=>setUserEmail(e.target.value)}/>
                     <label className="form-label">Email</label>
                     {
-                        errors == 11000 ? <p className="text-danger">An account with that email already exists.</p> : null
+                        errors == 11000 ? <p className="text-danger mb-0">An account with that email already exists.</p> : null
                     }
                     {
                         errors.email ? <p className="text-danger">{errors.email.message}</p> : null
