@@ -131,7 +131,7 @@ const CocktailDetails = () => {
                 }
             </div>
             <div className="modal-footer">
-                <button type="button" className="btn btn-dark" data-dismiss="modal">Cancel</button>
+                <button type="button" className="btn btn-outline-dark" data-dismiss="modal">Cancel</button>
                 <button type="button" className="btn btn-outline-dark" onClick={()=>addToCollection} data-dismiss="modal">Add</button>
             </div>
             </div>
