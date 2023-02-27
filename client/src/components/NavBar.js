@@ -53,9 +53,11 @@ const NavBar = () => {
             <ul className="dropdown-menu">
                 <li><Link className="dropdown-item" to="/">Home</Link></li>
                 <li><Link className="dropdown-item" to="/browse">Browse All</Link></li>
+                {loggedIn ? <li><Link className="dropdown-item" to="/addnew">Add New Cocktail</Link></li> : null}
                 <li><Link className="dropdown-item" to="/browsecollections">View Collections</Link></li>
                 {/* <li><a className="dropdown-item" href="/favorites">Favorites</a></li> */}
-                {loggedIn ? <li><Link className="dropdown-item" to="/addnew">Add New Cocktail</Link></li> : null}
+
+                {loggedIn ? <li><Link className="dropdown-item" to="/addcollection">Add New Collection</Link></li> : null}
             </ul>
         </div>
 

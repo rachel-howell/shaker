@@ -43,23 +43,38 @@ const NewCollection = () => {
         <form className="p-3 d-flex flex-column col-12 col-lg-8 col-xl-6 mx-auto" onSubmit={submitHandler}>
             <div className="mb-3 col-12">
                 <div className="d-flex flex-row mx-auto col-12">
-                    <div className="form-floating mb-3 col-6 col-md-5 mx-auto">
+                    <div className="form-floating mb-3 col-12 col-md-10 mx-auto">
                         <input className="form-control" type="text" onChange={(e)=>setTitle(e.target.value)}/>
-                        <label className="form-label">Cocktail Name</label>
-                        {/* {
-                            errors.strDrink ? <p className="text-danger">{errors.strDrink.message}</p> : null
-                        }
+                        <label className="form-label">Collection Title</label>
                         {
-                            uniqueError ? <p className="text-danger">A cocktail with that name already exists in the database.</p> : null
-                        } */}
+                            errors.title ? <p className="text-danger">{errors.strDrink.title}</p> : null
+                        }
                     </div>
-                    {/* <div className="form-floating col-md-5 mx-auto mb-3 col-6">
-                        <input className="form-control" type="text" onChange={(e)=>setGlass(e.target.value)}/>
-                        <label className="form-label">Type of Glass</label>
+                </div>
+
+                <div className="d-flex flex-row mx-auto col-12">
+                    <div className="form-floating mb-3 col-12 col-md-10 mx-auto">
+                        <input className="form-control" type="text" onChange={(e)=>setDescription(e.target.value)}/>
+                        <label className="form-label">Description</label>
                         {
-                            errors.strGlass ? <p className="text-danger">{errors.strGlass.message}</p> : null
+                            errors.title ? <p className="text-danger">{errors.strDrink.title}</p> : null
                         }
-                    </div> */}
+                    </div>
+                </div>
+
+
+
+
+                <div className="d-flex flex-row mx-auto col-12 border">
+                    <div className="mb-3 col-12 col-md-10 mx-auto">
+                        <label className="form-label">Set to Private?</label>
+                        <div class="form-check form-switch">
+                            <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onChange={(e)=>setPrivacy(e.target.value)}/>
+                        </div>
+                        {
+                            errors.title ? <p className="text-danger">{errors.strDrink.title}</p> : null
+                        }
+                    </div>
                 </div>
 
                 {/* <div className="form-floating mb-3 col-12 col-md-11 mx-auto">
