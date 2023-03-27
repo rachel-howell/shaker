@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CocktailCollection from './lists/CocktailCollection';
+import { UserContext } from './UserContext';
+import axios from 'axios';
 
 const Homepage = () => {
 
     const navigate = useNavigate();
     const [ userInput, setUserInput ] = useState("");
     const [ searchByName, setSearchByName ] = useState(true);
+    const { setCollections } = useContext(UserContext);
 
     const randomBtn = () => {
         navigate('/random')
@@ -22,10 +25,22 @@ const Homepage = () => {
         console.log(searchByName)
     }
 
-    let collections = {
+    let homeCollections = {
         userCocktails: 'http://localhost:8000/api/getAll',
         trendingCocktails: `https://www.thecocktaildb.com/api/json/v2/9973533/popular.php`
     }
+
+    useEffect(()=>{
+      axios
+          .get('http://localhost:8000/api/usercollections')
+          .then((res) => 
+          console.log(res)
+          )
+          .catch(err => {
+              console.log(err)
+          })
+  }, [])
+
 
   return (
     <div className="d-flex flex-column">
@@ -64,10 +79,10 @@ const Homepage = () => {
         </div>
 
         <div>
-            <CocktailCollection url={collections.userCocktails} title={'Newest Cocktails'} numToDisplay={6}/>
+            <CocktailCollection url={homeCollections.userCocktails} title={'Newest Cocktails'} numToDisplay={6}/>
         </div>
         <div>
-            <CocktailCollection url={collections.trendingCocktails} title={'Popular Cocktails'} numToDisplay={6}/>
+            <CocktailCollection url={homeCollections.trendingCocktails} title={'Popular Cocktails'} numToDisplay={6}/>
         </div>
     </div>
   )

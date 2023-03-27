@@ -7,4 +7,5 @@ module.exports = (app) => {
     app.get('/api/users', UserController.showUsers)
     app.get('/api/checkloginstatus', UserController.isUserLoggedIn)
     app.put('/api/updatefaves/:id', UserController.updateUserFavorite)
+    app.get('/api/usercollections', UserController.getCollections)
 }

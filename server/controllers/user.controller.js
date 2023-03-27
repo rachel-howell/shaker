@@ -58,5 +58,10 @@ module.exports = {
         User.findById({id: req.body})
         .then(user => res.json(user.favorites))
         .catch(err => res.status(400).json(err))
+    },
+    getCollections: (req,res) => {
+        User.findById({id: req.body})
+        .then(user => res.json(user.collections))
+        .catch(err => res.status(400).json(err))
     }
 }

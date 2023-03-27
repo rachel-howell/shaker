@@ -7,6 +7,8 @@ const CocktailDetails = () => {
 
     const [ cocktail, setCocktail ] = useState("");
     const { user, collections } = useContext(UserContext);
+
+    console.log("---------------", collections)
     
     const imgStyle = {
         height: '30vh'
