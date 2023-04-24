@@ -6,9 +6,11 @@ import { UserContext } from '../UserContext';
 const CocktailDetails = () => {
 
     const [ cocktail, setCocktail ] = useState("");
-    const { user, collections } = useContext(UserContext);
+    const [ allColl, setAllColl ] = useState([]);
+    const [ selectedColl, setSelectedColl ] = useState("");
+    const { user } = useContext(UserContext);
 
-    console.log("---------------", collections)
+    // console.log("---------------", collections)
     
     const imgStyle = {
         height: '30vh'
@@ -19,18 +21,6 @@ const CocktailDetails = () => {
     const divStyle = {
         minHeight: "52vh"
     }
-
-    // const saveDrink = (id) =>{
-    //     axios // This axios call will get the user's current list of favorites.
-    //         .get(`https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=${id}`)
-    //         .then((res) => setCocktail(res.data.drinks[0]))
-    //         .catch(err => console.log(err))
-    //     let currentFaves = // This array will add the new cocktail to the current list of favorites.
-    //     axios.put // This axios call will communicate with the internal database to update the user's list of favorite cocktails with the new array created above.
-    //         .get(`https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=${id}`)
-    //         .then((res) => setCocktail(res.data.drinks[0]))
-    //         .catch(err => console.log(err))
-    // }
 
     const addToCollection = (collId) => {
         const newDrink = {
@@ -47,13 +37,21 @@ const CocktailDetails = () => {
 
     useEffect(()=>{
         axios
-            .get(`https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=${id}`)
-            .then((res) => setCocktail(res.data.drinks[0]))
-            .catch(err => console.log(err))
+          .get(`https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=${id}`)
+          .then((res) => setCocktail(res.data.drinks[0]))
+          .catch(err => console.log(err))
+
+        axios
+          .get(`http://localhost:8000/api/viewcollections`)
+          .then((res) => setAllColl(res.data))
+          .catch(err => console.log(err))
     }, [])
     
   return (
     <div className="pt-3">
+      {
+        console.log(cocktail)
+      }
         <h1>{ cocktail.strDrink }</h1>
 
         <div className="d-flex flex-wrap mx-auto col-md-10 col-12 justify-content-between align-items-start" style={divStyle}>
@@ -128,13 +126,13 @@ const CocktailDetails = () => {
             <div className="modal-body">
                 To which collection would you like to add this drink?
                 {
-                    collections ? 
-                    collections.map(collection => <p>{collection.title}</p>) : "no"
+                    allColl ? 
+                    allColl.map(collection => <button onClick={()=>setSelectedColl(collection._id)}>{collection.title}</button>) : "no"
                 }
             </div>
             <div className="modal-footer">
                 <button type="button" className="btn btn-outline-dark" data-dismiss="modal">Cancel</button>
-                <button type="button" className="btn btn-outline-dark" onClick={()=>addToCollection} data-dismiss="modal">Add</button>
+                <button type="button" className="btn btn-outline-dark" onClick={()=>addToCollection(selectedColl)} data-dismiss="modal">Add</button>
             </div>
             </div>
         </div>

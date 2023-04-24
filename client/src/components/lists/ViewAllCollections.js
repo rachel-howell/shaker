@@ -13,8 +13,6 @@ const ViewAllCollections = () => {
             .get(`http://localhost:8000/api/viewcollections`)
             .then((res)=>(setCollectionList(res.data)))
             .catch(err=>console.log(err))
-
-            // console.log(collectionList)
     }, [])
 
   return (
@@ -23,7 +21,7 @@ const ViewAllCollections = () => {
         {
             collectionList.map(collection =>(
             <div>
-                <CocktailCollection url={`http://localhost:8000/api/viewcollection/${collection.id}`} title={collection.title} numToDisplay={6}/>
+                <CocktailCollection url={`http://localhost:8000/api/viewcollection/${collection._id}`} title={collection.title} numToDisplay={6}/>
             </div>
             ))
         }
