@@ -44,7 +44,7 @@ const NavBar = () => {
     }
 
   return (
-    <div className="navbar d-flex justify-content-between align-items-center px-4 col-12 col-md-10 mx-auto">
+    <div className="navbar d-flex justify-content-between align-items-center px-4 col-12 col-md-10 mx-auto border border-red-500">
 
         <div className="nav-item dropdown">
             <button className="nav-link dropdown-toggle btn shadow-none" style={dropDownMenu} href="#" role="button" data-toggle="dropdown" aria-expanded="false">
@@ -52,11 +52,10 @@ const NavBar = () => {
             </button>
             <ul className="dropdown-menu">
                 <li><Link className="dropdown-item" to="/">Home</Link></li>
-                <li><Link className="dropdown-item" to="/browse">Browse All</Link></li>
-                {loggedIn ? <li><Link className="dropdown-item" to="/addnew">Add New Cocktail</Link></li> : null}
+                <li><Link className="dropdown-item" to="/browse">Browse All Cocktails</Link></li>
                 <li><Link className="dropdown-item" to="/browsecollections">View Collections</Link></li>
-                {/* <li><a className="dropdown-item" href="/favorites">Favorites</a></li> */}
 
+                {loggedIn ? <li><Link className="dropdown-item" to="/addnew">Add New Cocktail</Link></li> : null}
                 {loggedIn ? <li><Link className="dropdown-item" to="/addcollection">Add New Collection</Link></li> : null}
             </ul>
         </div>

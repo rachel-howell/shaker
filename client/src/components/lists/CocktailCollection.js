@@ -26,8 +26,6 @@ const CocktailCollection = ({url, title, numToDisplay, id}) => {
             })
     }, [])
 
-    // onClick function that will pass the id of the collection to the ViewCollection component
-
   return (
     <>
         <h2 className="mt-4">{title}</h2>
@@ -57,17 +55,11 @@ const CocktailCollection = ({url, title, numToDisplay, id}) => {
                   ? cocktailList.drinkList.slice(0,numToDisplay).map(drink => (
                     <div className="d-flex flex-column mx-auto mb-3 mt-1">                     
                         {
-                            drink.idDrink ? 
+                            drink.key ? 
                             <>
-                            <Link to={`/details/${drink.idDrink}`}><img className="rounded mb-1" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link> 
-                            <Link to={`/details/${drink.idDrink}`} style={linkStyle}>{drink.strDrink}</Link> 
-                            </> : null
-                        }
-                        {
-                            drink._id ? 
-                            <>
-                            <Link to={`/userCocktail/${drink._id}`}><img className="rounded mb-1" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link> 
-                            <Link to={`/userCocktail/${drink._id}`} style={linkStyle}>{drink.strDrink}</Link> 
+                            { console.log("ou ou ou", drink)}
+                            <Link to={`/details/${drink.key}`}><img className="rounded mb-1" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link> 
+                            <Link to={`/details/${drink.key}`} style={linkStyle}>{drink.strDrink}</Link> 
                             </> : null
                         }
                     </div>

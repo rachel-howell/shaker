@@ -29,8 +29,10 @@ const CocktailDetails = () => {
             strDrink: cocktail.strDrink
         }
 
+        console.log("====================", newDrink)
+
         axios
-            .put(`http://localhost:8000/api/addtocollection/${collId}`, {drinkList: newDrink})
+            .put(`http://localhost:8000/api/addtocollection/${collId}`, newDrink)
             .then((res) => setCocktail(res.data.drinks[0]))
             .catch(err => console.log(err))
     }
@@ -49,9 +51,6 @@ const CocktailDetails = () => {
     
   return (
     <div className="pt-3">
-      {
-        console.log(cocktail)
-      }
         <h1>{ cocktail.strDrink }</h1>
 
         <div className="d-flex flex-wrap mx-auto col-md-10 col-12 justify-content-between align-items-start" style={divStyle}>
