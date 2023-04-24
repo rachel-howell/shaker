@@ -33,8 +33,29 @@ const CocktailCollection = ({url, title, numToDisplay, id}) => {
         <h2 className="mt-4">{title}</h2>
         <div className="d-flex col-12 col-md-10 mx-auto my-auto flex-wrap" >
             {
-                cocktailList ? cocktailList.slice(0,numToDisplay).map(drink => (
-                    <div className="d-flex flex-column mx-auto mb-3 mt-1">
+                cocktailList ? 
+                Array.isArray(cocktailList) 
+                ? cocktailList.slice(0,numToDisplay).map(drink => (
+                      <div className="d-flex flex-column mx-auto mb-3 mt-1">                     
+                          {
+                              drink.idDrink ? 
+                              <>
+                              <Link to={`/details/${drink.idDrink}`}><img className="rounded mb-1" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link> 
+                              <Link to={`/details/${drink.idDrink}`} style={linkStyle}>{drink.strDrink}</Link> 
+                              </> : null
+                          }
+                          {
+                              drink._id ? 
+                              <>
+                              <Link to={`/userCocktail/${drink._id}`}><img className="rounded mb-1" src={drink.strDrinkThumb} alt="Drink" style={imgStyle}/></Link> 
+                              <Link to={`/userCocktail/${drink._id}`} style={linkStyle}>{drink.strDrink}</Link> 
+                              </> : null
+                          }
+                      </div>
+                    )) 
+                  : typeof cocktailList == 'object'
+                  ? cocktailList.drinkList.slice(0,numToDisplay).map(drink => (
+                    <div className="d-flex flex-column mx-auto mb-3 mt-1">                     
                         {
                             drink.idDrink ? 
                             <>
@@ -50,7 +71,10 @@ const CocktailCollection = ({url, title, numToDisplay, id}) => {
                             </> : null
                         }
                     </div>
-                )) : <p className="d-flex flex-column mx-auto">Something went wrong.</p>
+                  )) 
+                  : <p className="d-flex flex-column mx-auto">Something went wrong.</p>
+                  : console.log("something is seriously wrong")
+                
             }
         </div>
     </>
