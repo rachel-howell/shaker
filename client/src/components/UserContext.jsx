@@ -9,6 +9,7 @@ export const UserProvider = (props) => {
     const [ username, setUsername ] = useState('');
     const [ userId, setUserId ] = useState('');
     const [ collections, setCollections ] = useState([]);
+    const [ navShow, setNavShow ] = useState(true);
 
   return (
     <UserContext.Provider value={{
@@ -21,7 +22,9 @@ export const UserProvider = (props) => {
             userId,
             setUserId,
             collections,
-            setCollections
+            setCollections,
+            navShow,
+            setNavShow
         }}>
             {props.children}
     </UserContext.Provider>

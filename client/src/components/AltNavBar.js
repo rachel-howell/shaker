@@ -7,12 +7,11 @@ import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios'
 
 
-const NavBar = () => {
+const AltNavBar = () => {
 
     const navigate = useNavigate();
 
     const { loggedIn, setLoggedIn } = useContext(UserContext);
-    const { navShow } = useContext(UserContext);
 
     const homeBtn = () => {
         navigate('/')
@@ -46,9 +45,8 @@ const NavBar = () => {
 
   return (
     <div>
-      {
-        navShow ? <div className="navbar d-flex justify-content-between align-items-center px-4 col-12 col-md-10 mx-auto">
-        <div className="nav-item dropdown">
+      <div className="navbar d-flex justify-content-between items-center px-4 w-screen mx-auto bg-opacity-0 absolute top-0 bg-[#faf5f2]">
+        {/* <div className="nav-item dropdown">
             <button className="nav-link dropdown-toggle btn shadow-none" style={dropDownMenu} href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                 <MenuIcon />
             </button>
@@ -60,16 +58,14 @@ const NavBar = () => {
                 {loggedIn ? <li><Link className="dropdown-item" to="/addnew">Add New Cocktail</Link></li> : null}
                 {loggedIn ? <li><Link className="dropdown-item" to="/addcollection">Add New Collection</Link></li> : null}
             </ul>
-        </div>
+        </div> */}
 
-        <div onClick={homeBtn}><img src={require('../assets/logo.png')} style={logoStyle} alt="logo"/></div>
+        <div onClick={homeBtn}><img src={require('../assets/logo.png')} style={logoStyle} alt="logo" className="ml-2 mt-2"/></div>
     
         <button className="btn shadow-none" onClick={loggedIn ? logoutBtn : loginBtn}>
-            { loggedIn ? <LogoutIcon /> : <AccountCircleIcon />}
+            { loggedIn ? <LogoutIcon /> : <button className="bg-[#a10d00] p-4 px-5 rounded-full bg-opacity-70 hover:bg-opacity-80 duration-200 text-xl text-[#faf5f2]">Log In</button>}
         </button>
     </div>
-    : null
-    }
 
     
 
@@ -77,4 +73,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default AltNavBar

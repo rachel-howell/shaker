@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import CocktailCollection from './lists/CocktailCollection';
 import { UserContext } from './UserContext';
 import axios from 'axios';
+import AltNavBar from './AltNavBar';
 
 const Homepage = () => {
 
@@ -10,6 +11,7 @@ const Homepage = () => {
     const [ userInput, setUserInput ] = useState("");
     const [ searchByName, setSearchByName ] = useState(true);
     const { setCollections } = useContext(UserContext);
+    const { navShow, setNavShow } = useContext(UserContext)
 
     const randomBtn = () => {
         navigate('/random')
@@ -39,17 +41,22 @@ const Homepage = () => {
           .catch(err => {
               console.log(err)
           })
+      
+      setNavShow(false)
   }, [])
 
 
   return (
-    <div className="d-flex flex-row border border-5">
-      <div className="col-8 mx-auto vh-75 border border-5">
-            <h1>Cocktail Recipe Search</h1>
+    <div className="flex flex-col">
+      <AltNavBar />
+      <div className="flex flex-row">
+
+        <div className="w-1/2 mx-auto mt-64">
+            <h1 className="text-6xl font-serif">Cocktail Recipe Search</h1>
             
             <form className="p-3 d-flex flex-column col-12 col-lg-6 mx-auto" onSubmit={submitHandler}>
 
-                <div className="mb-3">
+                <div className="mb-3 mt-3">
                     <input className="form-control" type="text" placeholder="Type search here..." onChange={(e)=>setUserInput(e.target.value)}/>
                 </div>
 
@@ -76,9 +83,10 @@ const Homepage = () => {
                 <button className="btn border" onClick={randomBtn}>Random Cocktail</button>
 
             </form>
-        </div>
-        <div>
-          <img src={require('../assets/cutedrink.jpg')} className="rounded float-right" height="800px" alt="logo"/>
+      </div>
+
+        <div className="w-1/2">
+          <img src={require('../assets/cutedrink1.jpg')} className="fill" alt="logo"/>
         </div>
 
         {/* <div>
@@ -88,6 +96,8 @@ const Homepage = () => {
             <CocktailCollection url={homeCollections.trendingCocktails} title={'Popular Cocktails'} numToDisplay={6}/>
         </div> */}
     </div>
+    </div>
+    
        
   )
 }
