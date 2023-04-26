@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import { UserContext } from '../UserContext';
 import axios from 'axios';
 
 const SearchResults = () => {
@@ -7,6 +8,7 @@ const SearchResults = () => {
     const [ cocktailList, setCocktailList ] = useState([]);
     const [ newSearch, setNewSearch ] = useState("");
     const { name } = useParams();
+    const { navShow, setNavShow } = useContext(UserContext);
 
     const imgStyle = {
         height: '18em'
@@ -32,6 +34,8 @@ const SearchResults = () => {
                 console.log(err)
             })
         : setCocktailList(false)
+
+        setNavShow(true)
     }, [])
 
     const submitHandler = (e) => {

@@ -11,7 +11,11 @@ const Homepage = () => {
     const [ userInput, setUserInput ] = useState("");
     const [ searchByName, setSearchByName ] = useState(true);
     const { setCollections } = useContext(UserContext);
-    const { navShow, setNavShow } = useContext(UserContext)
+    const { navShow, setNavShow } = useContext(UserContext);
+
+    const imgStyle = {
+      height: '100vh'
+    }
 
     const randomBtn = () => {
         navigate('/random')
@@ -52,7 +56,7 @@ const Homepage = () => {
       <div className="flex flex-row">
 
         <div className="w-1/2 mx-auto mt-64">
-            <h1 className="text-6xl font-serif">Cocktail Recipe Search</h1>
+            <h1 className="text-5xl font-serif">Cocktail Recipe Search</h1>
             
             <form className="p-3 d-flex flex-column col-12 col-lg-6 mx-auto" onSubmit={submitHandler}>
 
@@ -85,8 +89,8 @@ const Homepage = () => {
             </form>
       </div>
 
-        <div className="w-1/2">
-          <img src={require('../assets/cutedrink1.jpg')} className="fill" alt="logo"/>
+        <div className="float-right">
+          <img src={require('../assets/cutedrink.jpg')} style={imgStyle} className="fill" alt="logo"/>
         </div>
 
         {/* <div>

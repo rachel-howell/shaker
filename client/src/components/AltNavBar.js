@@ -46,21 +46,8 @@ const AltNavBar = () => {
   return (
     <div>
       <div className="navbar d-flex justify-content-between items-center px-4 w-screen mx-auto bg-opacity-0 absolute top-0 bg-[#faf5f2]">
-        {/* <div className="nav-item dropdown">
-            <button className="nav-link dropdown-toggle btn shadow-none" style={dropDownMenu} href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                <MenuIcon />
-            </button>
-            <ul className="dropdown-menu">
-                <li><Link className="dropdown-item" to="/">Home</Link></li>
-                <li><Link className="dropdown-item" to="/browse">Browse All Cocktails</Link></li>
-                <li><Link className="dropdown-item" to="/browsecollections">View Collections</Link></li>
 
-                {loggedIn ? <li><Link className="dropdown-item" to="/addnew">Add New Cocktail</Link></li> : null}
-                {loggedIn ? <li><Link className="dropdown-item" to="/addcollection">Add New Collection</Link></li> : null}
-            </ul>
-        </div> */}
-
-        <div onClick={homeBtn}><img src={require('../assets/logo.png')} style={logoStyle} alt="logo" className="ml-2 mt-2"/></div>
+        <div onClick={homeBtn}><img src={require('../assets/logo.png')} style={logoStyle} alt="logo" className="ml-20 mt-2"/></div>
     
         <button className="btn shadow-none" onClick={loggedIn ? logoutBtn : loginBtn}>
             { loggedIn ? <LogoutIcon /> : <button className="bg-[#a10d00] p-4 px-5 rounded-full bg-opacity-70 hover:bg-opacity-80 duration-200 text-xl text-[#faf5f2]">Log In</button>}
