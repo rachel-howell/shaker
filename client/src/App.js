@@ -22,6 +22,7 @@ import ViewCollection from './components/lists/ViewCollection';
 import NewCollection from './components/userforms/NewCollection';
 import ViewAllCollections from './components/lists/ViewAllCollections';
 import NewHomepage from './components/NewHomepage'
+import FinalHomepage from './components/FinalHomepage';
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />}/>
             <Route path="/a" element={<NewHomepage />}/>
+            <Route path="/b" element={<FinalHomepage />}/>
             <Route path="/random" element={<RandomCocktail />}/>
             <Route path="/search/:name" element={<SearchResults />}/>
             <Route path="/search/" element={<SearchResults />}/>

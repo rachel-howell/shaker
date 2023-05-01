@@ -31,10 +31,10 @@ const Homepage = () => {
         console.log(searchByName)
     }
 
-    let homeCollections = {
-        userCocktails: 'http://localhost:8000/api/getAll',
-        trendingCocktails: `https://www.thecocktaildb.com/api/json/v2/9973533/popular.php`
-    }
+    // let homeCollections = {
+    //     userCocktails: 'http://localhost:8000/api/getAll',
+    //     trendingCocktails: `https://www.thecocktaildb.com/api/json/v2/9973533/popular.php`
+    // }
 
     useEffect(()=>{
       axios
@@ -52,7 +52,6 @@ const Homepage = () => {
 
   return (
     <div className="flex flex-col">
-      <AltNavBar />
       <div className="flex flex-row">
 
         <div className="w-1/2 mx-auto mt-64">
@@ -83,14 +82,14 @@ const Homepage = () => {
                     
                 </div>
 
-                <input className="btn border my-2" type="submit" />
-                <button className="btn border" onClick={randomBtn}>Random Cocktail</button>
+                <input className="btn hover:bg-opacity-80 duration-200 bg-[#a10d00] text-white my-2" type="submit" />
+                <button className="btn border duration-200 hover:bg-[#a10d00] hover:text-white" onClick={randomBtn}>Random Cocktail</button>
 
             </form>
       </div>
 
-        <div className="float-right">
-          <img src={require('../assets/cutedrink.jpg')} style={imgStyle} className="fill" alt="logo"/>
+        <div className="hidden sm:flex">
+          <img src={require('../assets/cutedrink.jpg')} style={imgStyle} className="rounded-2xl" alt="logo"/>
         </div>
 
         {/* <div>

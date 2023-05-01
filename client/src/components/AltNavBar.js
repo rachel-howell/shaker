@@ -44,19 +44,14 @@ const AltNavBar = () => {
     }
 
   return (
-    <div>
-      <div className="navbar d-flex justify-content-between items-center px-4 w-screen mx-auto bg-opacity-0 absolute top-0 bg-[#faf5f2]">
+    <div className="flex flex-row justify-content-between items-center border-4 mx-auto">
 
-        <div onClick={homeBtn}><img src={require('../assets/logo.png')} style={logoStyle} alt="logo" className="ml-20 mt-2"/></div>
-    
-        <button className="btn shadow-none" onClick={loggedIn ? logoutBtn : loginBtn}>
-            { loggedIn ? <LogoutIcon /> : <button className="bg-[#a10d00] p-4 px-5 rounded-full bg-opacity-70 hover:bg-opacity-80 duration-200 text-xl text-[#faf5f2]">Log In</button>}
-        </button>
+      <div onClick={homeBtn}><img src={require('../assets/logo.png')} style={logoStyle} alt="logo" className="mt-2"/></div>
+  
+      <button className="btn shadow-none" onClick={loggedIn ? logoutBtn : loginBtn}>
+          { loggedIn ? <LogoutIcon /> : <button className="bg-[#a10d00] p-4 px-5 rounded-full bg-opacity-70 hover:bg-opacity-80 duration-200 text-xl text-[#faf5f2]">Log In</button>}
+      </button>
     </div>
-
-    
-
-  </div>
   )
 }
 
