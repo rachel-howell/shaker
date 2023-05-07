@@ -13,8 +13,17 @@ const Homepage = () => {
     const { setCollections } = useContext(UserContext);
     const { navShow, setNavShow } = useContext(UserContext);
 
+    // const imgStyle = {
+    //   height: '100vh'
+    // }
     const imgStyle = {
-      height: '100vh'
+      height: '100vh',
+      position: 'absolute',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      left: '0',
+      right: '0',
+      textAlign: 'center'
     }
 
     const randomBtn = () => {
@@ -54,10 +63,10 @@ const Homepage = () => {
     <div className="flex flex-col">
       <div className="flex flex-row">
 
-        <div className="w-1/2 mx-auto mt-64">
-            <h1 className="text-5xl font-serif">Cocktail Recipe Search</h1>
+        <div className="xl:w-1/2 w-5/6 mx-auto mt-64 z-50 bg-white bg-opacity-75 rounded-xl p-5">
+            <h1 className="text-5xl font-serif border-4 sm:border-red-500 lg:border-green-400 xl:border-black">Cocktail Recipe Search</h1>
             
-            <form className="p-3 d-flex flex-column col-12 col-lg-6 mx-auto" onSubmit={submitHandler}>
+            <form className="p-3 w-5/6 flex flex-col mx-auto" onSubmit={submitHandler}>
 
                 <div className="mb-3 mt-3">
                     <input className="form-control" type="text" placeholder="Type search here..." onChange={(e)=>setUserInput(e.target.value)}/>
@@ -82,15 +91,21 @@ const Homepage = () => {
                     
                 </div>
 
-                <input className="btn hover:bg-opacity-80 duration-200 bg-[#a10d00] text-white my-2" type="submit" />
-                <button className="btn border duration-200 hover:bg-[#a10d00] hover:text-white" onClick={randomBtn}>Random Cocktail</button>
+                <button className="p-2 rounded-full hover:text-black hover:bg-opacity-70 duration-200 bg-[#a10d00] text-white my-2">Submit</button>
+                <button className="p-2 rounded-full hover:text-black hover:bg-opacity-70 duration-200 bg-[#a10d00] text-white" onClick={randomBtn}>Random Cocktail</button>
 
             </form>
       </div>
 
-        <div className="hidden sm:flex">
+        <div className="hidden xl:flex">
           <img src={require('../assets/cutedrink.jpg')} style={imgStyle} className="rounded-2xl" alt="logo"/>
         </div>
+        <div className="xl:hidden z-0">
+          <img src={require('../assets/cutedrink.jpg')} style={imgStyle} className="rounded-2xl w-screen" alt="logo"/>
+        </div>
+        {/* <div className="xl:hidden absolute z-0">
+          <img src={require('../assets/cutedrink.jpg')} style={imgStyle} className="rounded-2xl w-screen" alt="logo"/>
+        </div> */}
 
         {/* <div>
             <CocktailCollection url={homeCollections.userCocktails} title={'Newest Cocktails'} numToDisplay={6}/>

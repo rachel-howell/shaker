@@ -68,7 +68,7 @@ function App() {
             <Route path="/addcollection" element={<NewCollection />} />
             <Route path="/browsecollections" element={< ViewAllCollections />} />
           </Routes>
-        <Footer />
+        {/* <Footer /> */}
         </BrowserRouter>
       </UserProvider>
     </div>
