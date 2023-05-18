@@ -62,7 +62,7 @@ const Homepage = () => {
 
 
   return (
-    <div className="flex flex-col bg-[#fbf6ee]">
+    <div className="flex flex-col bg-[#fbf6ee] h-screen">
       <div className="flex flex-row">
 
         <div className="xl:w-1/3 lg:w-7/12 w-5/6 mx-auto mt-64 z-50 xl:bg-[#fbf6ee] bg-opacity-75 rounded-xl p-5">

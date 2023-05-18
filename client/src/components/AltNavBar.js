@@ -44,7 +44,7 @@ const AltNavBar = () => {
     }
 
   return (
-    <div className="flex flex-row justify-content-between items-center mx-auto w-screen absolute p-3 z-20">
+    <div className="flex flex-row justify-content-between items-center mx-auto w-screen absolute p-3 z-20 bg-[#fbf6ee] bg-opacity-80 xl:bg-opacity-0">
 
       <div onClick={homeBtn}><img src={require('../assets/logo.png')} style={logoStyle} alt="logo" className="ml-2"/></div>
   
