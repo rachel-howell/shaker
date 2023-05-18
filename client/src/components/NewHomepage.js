@@ -13,11 +13,13 @@ const Homepage = () => {
     const { setCollections } = useContext(UserContext);
     const { navShow, setNavShow } = useContext(UserContext);
 
-    // const imgStyle = {
-    //   height: '100vh'
-    // }
     const imgStyle = {
       height: '100vh',
+      width: 'auto',
+    }
+    const imgStyleSmol = {
+      height: '100vh',
+      width: 'auto',
       position: 'absolute',
       marginLeft: 'auto',
       marginRight: 'auto',
@@ -60,10 +62,10 @@ const Homepage = () => {
 
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-[#fbf6ee]">
       <div className="flex flex-row">
 
-        <div className="xl:w-1/2 w-5/6 mx-auto mt-64 z-50 bg-white bg-opacity-75 rounded-xl p-5">
+        <div className="xl:w-1/3 lg:w-7/12 w-5/6 mx-auto mt-64 z-50 xl:bg-[#fbf6ee] bg-opacity-75 rounded-xl p-5">
             <h1 className="text-5xl font-serif border-4 sm:border-red-500 lg:border-green-400 xl:border-black">Cocktail Recipe Search</h1>
             
             <form className="p-3 w-5/6 flex flex-col mx-auto" onSubmit={submitHandler}>
@@ -98,10 +100,13 @@ const Homepage = () => {
       </div>
 
         <div className="hidden xl:flex">
-          <img src={require('../assets/cutedrink.jpg')} style={imgStyle} className="rounded-2xl" alt="logo"/>
+          <img src={require('../assets/cutedrink1.jpg')} style={imgStyle} className="rounded-2xl" alt="logo"/>
         </div>
         <div className="xl:hidden z-0">
-          <img src={require('../assets/cutedrink.jpg')} style={imgStyle} className="rounded-2xl w-screen" alt="logo"/>
+          <img src={require('../assets/cutedrink1.jpg')} style={imgStyleSmol} className="rounded-2xl w-screen" alt="logo"/>
+        </div>
+        <div className="sm:hidden z-0">
+          <img src={require('../assets/cutedrink.jpg')} style={imgStyleSmol} className="rounded-2xl w-screen" alt="logo"/>
         </div>
         {/* <div className="xl:hidden absolute z-0">
           <img src={require('../assets/cutedrink.jpg')} style={imgStyle} className="rounded-2xl w-screen" alt="logo"/>
